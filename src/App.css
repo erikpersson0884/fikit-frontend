@@ -43,6 +43,7 @@
     --glassColor: #0a0a0ac4;
     --headerGlassColor: #00000092;
     --contrastColor: #008000;
+    --contrastColor2: #2f4f4f;
     --footerColor: #454545;
     --projectLinkColor: #cbebff;
 
@@ -144,4 +145,25 @@ line {
     width: 100%;
     height: max-content;
     margin-top: 2rem;
+}
+
+
+
+
+.button {
+    background: darkslategray;
+    color: #fff;
+
+    cursor: pointer;
+
+    padding: .4rem;
+    border-radius: .1rem;
+}
+
+.button:hover {
+    background: #192929;
+}
+
+.changedField {
+    outline: .15rem solid orange;
 }

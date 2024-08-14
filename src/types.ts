@@ -9,10 +9,10 @@ export interface Group {
 export interface Person {    
     id: string;
     name: string;
-    nickname: string;
+    nick: string;
     post: string;
     description: string;
-    url: string;
+    link: string;
     imagePath: string;
 }
 

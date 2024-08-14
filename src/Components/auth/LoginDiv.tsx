@@ -12,9 +12,6 @@ const LoginDiv: React.FC = () => {
     const navigate: NavigateFunction = useNavigate(); // Change the type of history to NavigateFunction
 
 
-
-
-
     function handleLogin(event: React.FormEvent) {
         event.preventDefault(); 
 
@@ -35,8 +32,7 @@ const LoginDiv: React.FC = () => {
             return response.json();
         })
         .then(data => {
-            console.log("here")
-            localStorage.setItem('token', data.adminKey);
+            localStorage.setItem('adminKey', data.adminKey);
             login(true);
             navigate('/');
         })

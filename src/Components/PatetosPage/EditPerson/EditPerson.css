@@ -4,9 +4,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: .8rem;
 
+    box-sizing: border-box;
     width: 100%;
+    padding-inline: 1rem;
 }
 
 .editPersonImage {
@@ -21,6 +24,8 @@
     border: .05rem solid #000;
 
     min-height: max-content;
+    width: 4rem;
+
 }
 
 .editPerson input {
@@ -28,31 +33,21 @@
 
     text-align: center;
 
-    width: 3rem;
 }
 
 .editPerson textarea {
     flex: 4;
 
     height: 5rem;
+    padding: .4rem;
 }
 
-/* 
-.editPerson .test {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
+textarea {
+    resize: none;
+    width: 30rem !important;
+    }
 
-    height: 100%;
-    /* width: 30%; */
-    flex: none;
+.updatePersonButton {
+    background: var(--contrastColor2);
+    color: #fff;
 }
-
-.test input {
-    width: 40%;
-    height: 2rem;
-    flex: none;
-} */

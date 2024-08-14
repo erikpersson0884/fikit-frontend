@@ -3,6 +3,7 @@ import './EditGroup.css'
 
 import { Group, Person } from '../../types'
 import axios from "axios";
+import EditPerson from "../EditPerson/EditPerson";
 
 const EditGroup: React.FC<{ group: Group }> = ({ group }) => {
     const [showPeople, setShowPeople] = React.useState<boolean>(true);
@@ -33,9 +34,8 @@ const EditGroup: React.FC<{ group: Group }> = ({ group }) => {
                 id: group.id,
                 year,
                 nickname
-            }
+            }, adminKey: localStorage.getItem('adminKey')
         })
-
     }
 
     return (
@@ -57,17 +57,16 @@ const EditGroup: React.FC<{ group: Group }> = ({ group }) => {
                     onChange={handleNicknameChange} 
                     className="noInputFormatting" 
                 />
-                <button onClick={handleUpdateGroup}>Update Group</button>
+                <button className="updateGroupButton noButtonFormatting" onClick={handleUpdateGroup}>Update Group</button>
             </header>
 
-            {/* Optional: Display people list if `showPeople` is true */}
-            {/* {showPeople && 
+            {showPeople && 
                 <div className="editGroupPeople">
                     {group.people.map((person: Person, index: number) => (
-                        <EditPerson key={index} person={person} />
+                        <EditPerson key={index} person={person} groupId={group.id} />
                     ))}
                 </div>
-            } */}
+            }
 
             <button className="noButtonFormatting expandGroup" onClick={toggleShowPeople}>
                 <img src={showPeople ? "/images/icons/up.svg" : "/images/icons/down.svg"} alt="Toggle people" />

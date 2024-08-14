@@ -11,7 +11,14 @@
 }
 
 .EditGroup header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+
     border-bottom: #000 solid .1rem;
+    margin-inline: 1rem;
 }
 
 .EditGroup header input {
@@ -38,4 +45,16 @@
     gap: 1rem;
 
     margin: 1rem 0;
+}
+
+.updateGroupButton {
+    background-color: var(--contrastColor2);
+    color: #fff;
+
+    padding: .5rem;
+    margin-left: auto;
+}
+
+.updateGroupButton:hover {
+    background-color: var(--contrastColor);
 }
