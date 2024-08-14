@@ -15,6 +15,8 @@ import EditGroup from './Components/PatetosPage/EditGroup/EditGroup'
 
 import { AuthProvider, useAuth } from './AuthenticationContext'
 
+
+
 function App() {
     const [groups, setGroups] = React.useState<Group[]>([]);
     const [posts, setPosts] = React.useState<Post[]>([]);
@@ -51,7 +53,7 @@ function App() {
     
     return (
         <AuthProvider>
-            <BrowserRouter>
+            <BrowserRouter basename='/fikit-frontend/'>
                 <Header />
 
 

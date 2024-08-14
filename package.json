@@ -1,17 +1,23 @@
 {
-  "name": "frontend",
+  "name": "fikit-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://erikpersson0884.github.io/fikit-frontend/",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "build-deploy": "npm run build && npm run deploy",
+    "gh": "npm run build-deploy"
   },
   "dependencies": {
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
+    "gh-pages": "^6.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.26.0"
