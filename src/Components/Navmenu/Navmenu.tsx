@@ -12,17 +12,20 @@ const Navmenu: React.FC = () => {
         { text: 'adminPanel', link: '/adminPanel' }
     ]
 
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated, logout } = useAuth();
     console.log(isAuthenticated)
     
     return (
-        <nav className='Navmenu'>
+        <nav className='navmenu'>
             {isAuthenticated ?
-            navItems.map((item, index) => (
-                <Link key={index} to={item.link} className='noAFormatting hoverUnderSlide'>
-                    {item.text}
-                </Link>
-            ))            
+            <>
+                {navItems.map((item, index) => (
+                    <Link key={index} to={item.link} className='noAFormatting hoverUnderSlide'>
+                        {item.text}
+                    </Link>
+                ))}
+                <button className='noButtonFormatting hoverUnderSlide' onClick={logout}>Log Out</button>
+            </>
             :
             <Link to='/login' className='noAFormatting hoverUnderSlide'>Login</Link>
             }

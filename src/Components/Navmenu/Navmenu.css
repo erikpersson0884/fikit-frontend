@@ -1,6 +1,6 @@
 
 
-.Navmenu {
+.navmenu {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,6 +11,6 @@
     right: 2rem;
 }
 
-.Navmenu a {
+.Navmenu>* {
     color: var(--linkColor)
 }
