@@ -1,11 +1,4 @@
-#root {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    width: 100%;
-    height: 100%;
-}
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&family=Protest+Revolution&display=swap');
 
 
 
@@ -50,7 +43,15 @@
     --progressbarColor: #000;
     --lightTextColor: #000;
     --headerColor: var(--offWhite);
+}
 
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
 }
 
 * {
@@ -166,4 +167,11 @@ line {
 
 .changedField {
     outline: .15rem solid orange;
+}
+
+section>h2 {
+    font-family: 'Protest Revolution', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    margin: 2rem 0;
 }
