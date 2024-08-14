@@ -1,0 +1,41 @@
+
+
+.EditGroup {
+    background: var(--offWhite);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    width: 80%;
+}
+
+.EditGroup header {
+    border-bottom: #000 solid .1rem;
+}
+
+.EditGroup header input {
+    background: #fff;
+
+    padding: .5rem;
+    outline: 1px solid #000;
+    margin: 1rem;
+}
+
+.EditGroup label {
+    margin: 1rem;
+}
+
+.expandGroup {
+    background: var(--headerColor);
+    
+    height: 2rem;
+}
+
+.editGroupPeople {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    margin: 1rem 0;
+}

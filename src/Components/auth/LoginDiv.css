@@ -1,0 +1,13 @@
+
+
+.loignDiv form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.loignDiv form div {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}

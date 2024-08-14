@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap');
+
+
+.pageHeader {
+    background: var(--headerColor);
+
+    font-family: 'Jacques Francois Shadow';
+
+    width: 100%;
+}
+.pageHeader .headerTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    position: relative;
+
+    width: max-content;
+    height: 10rem;
+    margin-inline: auto;
+}
+
+.pageHeader .logo {
+    height: 5rem;
+}
+
+.pageHeader h1 {
+    font-size: 4rem;
+    font-weight: 400;
+
+    height: 5rem;
+    margin: 0;
+}

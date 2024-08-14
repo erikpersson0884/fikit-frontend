@@ -1,0 +1,58 @@
+
+.editPerson {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: .8rem;
+
+    width: 100%;
+}
+
+.editPersonImage {
+    background: #fff;
+
+    height: 3rem;
+    border: .05rem solid #000;
+}
+
+.editPerson input, .editPerson textarea{
+    background: rgb(255, 255, 255);
+    border: .05rem solid #000;
+
+    min-height: max-content;
+}
+
+.editPerson input {
+    flex: 1;
+
+    text-align: center;
+
+    width: 3rem;
+}
+
+.editPerson textarea {
+    flex: 4;
+
+    height: 5rem;
+}
+
+/* 
+.editPerson .test {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    height: 100%;
+    /* width: 30%; */
+    flex: none;
+}
+
+.test input {
+    width: 40%;
+    height: 2rem;
+    flex: none;
+} */

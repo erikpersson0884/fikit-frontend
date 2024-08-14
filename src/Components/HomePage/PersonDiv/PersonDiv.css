@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap');
+
+
+.person {
+    --postWidth: 11rem;
+}
+
+.personPost {
+    text-align: center;
+    
+    width: var(--postWidth);
+}
+
+.personTextImage {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.personImage {
+    background: var(--offWhite);
+    background-image: url('images/logos/fikit.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    width: var(--postWidth);
+    height: var(--postWidth);
+}
+
+.person .personText {
+    width: 13rem;
+    height: var(--postWidth);
+    overflow: hidden;
+}
+
+.person h2, .person .personPost {
+    font-family: 'jacques francois shadow';
+    font-weight: normal;
+}

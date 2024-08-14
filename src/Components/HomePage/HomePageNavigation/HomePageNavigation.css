@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap');
+
+
+.homePageNavigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+
+    width: max-content;
+    margin-inline: auto;
+    padding: 1rem;
+}
+
+.homePageNavigation a {
+    font-family: 'Protest Revolution', sans-serif;
+    font-size: 1.5rem;
+}
+
+.homePageNavigation a:hover {
+    /* margin-top: .2rem; */
+}

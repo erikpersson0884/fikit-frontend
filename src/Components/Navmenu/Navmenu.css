@@ -1,0 +1,16 @@
+
+
+.Navmenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+}
+
+.Navmenu a {
+    color: var(--linkColor)
+}
