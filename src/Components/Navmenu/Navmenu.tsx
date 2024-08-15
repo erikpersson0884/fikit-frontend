@@ -9,11 +9,11 @@ import { useAuth } from '../../AuthenticationContext';
 const Navmenu: React.FC = () => {
     const navItems = [
         { text: 'Home', link: '/' },
-        { text: 'adminPanel', link: '/adminPanel' }
+        { text: 'Admin Panel', link: '/adminPanel' },
+        { text: 'Upload Post', link: '/uploadPost' }
     ]
 
     const { isAuthenticated, logout } = useAuth();
-    console.log(isAuthenticated)
     
     return (
         <nav className='navmenu'>

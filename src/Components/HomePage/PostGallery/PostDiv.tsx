@@ -1,7 +1,7 @@
 import React from "react";
 import "./PostDiv.css";
 
-import type { Post } from "../../types";
+import type { Post } from "../../../types";
 
 
 import { useState, useEffect } from 'react';
@@ -25,7 +25,8 @@ const useImageValidation = (imagePath: string) => {
 
 const PostDiv: React.FC<Post> = ({ post }) => {
     const backendUrl = import.meta.env.VITE_POSTIMAGES_URL;
-    const imagePath = backendUrl + post.imageName;
+    const imagePath = backendUrl + post.imageFileName;
+    console.log(imagePath)
 
     const isValidImage = useImageValidation(imagePath);
     

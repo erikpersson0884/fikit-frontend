@@ -1,0 +1,67 @@
+
+.uploadPost {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    width: 50%;
+}
+
+h2 {
+    text-align: center;
+}
+
+.uploadPostForm {
+    background-color: #edebeb;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    height: 18rem;
+    width: 27rem;
+    border: .1rem solid #000;
+}
+
+.uploadPostForm>div {
+    width: 50%;
+}
+
+.uploadPostImage {
+    width: 80%;
+}
+
+.uploadPostForm>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-items: center;
+    gap: 1rem;
+
+    padding: 1rem;
+}
+
+.uploadPostImageLabel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .5rem;
+}
+
+.uploadPostForm .uploadPostTextDiv {
+    background-color: #c4c4c4;
+
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.uploadPostTextDiv textarea:nth-child(1) {
+    flex: 1;
+}
+
+.uploadPostTextDiv textarea:nth-child(2) {
+    flex: 4;
+}

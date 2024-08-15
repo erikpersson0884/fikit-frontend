@@ -1,0 +1,16 @@
+.editPostDiv {
+    background-color: var(--offWhite);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+
+    min-height: 5rem;
+    width: 100%;
+}
+
+.editPostDiv .expandButton {
+    margin-inline: auto;
+}
+

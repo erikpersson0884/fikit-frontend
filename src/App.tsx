@@ -15,6 +15,7 @@ import PatetosSection from './Components/HomePage/PatetosSection/PatetosSection'
 
 import { AuthProvider } from './AuthenticationContext'
 import AdminPanel from './Components/PatetosPage/AdminPanel'
+import PostPage from './Components/PostsPage/PostPage'
 
 
 function App() {
@@ -31,7 +32,6 @@ function App() {
                 })
                 .then(data => {
                     setGroups(data);
-                    // console.log(data)
                 })
             .catch(error => console.error('Error fetching data:', error));
     }, []);
@@ -53,6 +53,10 @@ function App() {
 
                     <Route path="/adminPanel" element={ 
                         <AdminPanel groups={groups} />
+                    }></Route>
+
+                    <Route path="/uploadPost" element={
+                        <PostPage />
                     }></Route>
 
                     <Route path="/login" element={

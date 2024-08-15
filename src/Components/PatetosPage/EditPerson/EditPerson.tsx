@@ -68,7 +68,6 @@ const EditPerson: React.FC<{ person: Person, groupId: string }> = ({ person, gro
         axios.post(`${API_BASE_URL}/api/people/updatePerson`, data)
         .then(response => {
             if (response.status === 200) {
-                console.log(response.data);
                 person = response.data;
                 setIsFormChanged(false);
             }

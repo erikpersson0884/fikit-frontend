@@ -164,6 +164,21 @@ line {
     background: #192929;
 }
 
+.disabledButton {
+    background: rgb(106, 107, 107);
+    color: #fff;
+
+    cursor: pointer;
+
+    padding: .4rem;
+    border-radius: .1rem;
+}
+
+.disabledButton:hover {
+    background: rgb(106, 107, 107);
+    cursor: inherit;
+}
+
 .changedField {
     outline: .15rem solid orange;
 }
@@ -173,4 +188,9 @@ section>h2 {
     font-size: 3rem;
     text-align: center;
     margin: 2rem 0;
+}
+
+hr {
+    border-color: #000;
+    width: 100%;
 }

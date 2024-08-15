@@ -28,8 +28,6 @@ const EditGroup: React.FC<{ group: Group }> = ({ group }) => {
     }
 
     function handleUpdateGroup() {
-        console.log("Updated Group:", { year, nickname });
-
         axios.post(`${API_BASE_URL}/api/people/updateGroup`, {
             updatedgroup: {
                 id: group.id,
