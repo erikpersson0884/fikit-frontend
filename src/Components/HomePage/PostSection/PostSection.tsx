@@ -4,10 +4,11 @@ import PostGallery from "../PostGallery/PostGallery";
 import './PostSection.css';
 
 const PostSection = () => {
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
     const [posts, setPosts] = React.useState<Post[]>([]);
 
     React.useEffect(() => {
-        fetch('/api/getPosts')
+        fetch(`${API_BASE_URL}/api/posts/getAllPosts`)
             .then(response => {
                 if (!response.ok) {
                 throw new Error('Network response was not ok');

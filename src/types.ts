@@ -13,12 +13,12 @@ export interface Person {
     post: string;
     description: string;
     link: string;
-    imagePath: string;
+    imageFileName: string;
 }
 
 export interface Post {
     id: string;
     title: string;
     description: string;
-    imagePath: string;
+    imageFileName: string;
 }

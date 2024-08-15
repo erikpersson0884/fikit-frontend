@@ -6,8 +6,10 @@
 
     font-family: 'Jacques Francois Shadow';
 
+    box-sizing: border-box;
     width: 100%;
-}
+    padding: 1rem;
+} 
 .pageHeader .headerTitle {
     display: flex;
     justify-content: center;
@@ -22,7 +24,7 @@
 }
 
 .pageHeader .logo {
-    height: 5rem;
+    height: 8rem;
 }
 
 .pageHeader h1 {

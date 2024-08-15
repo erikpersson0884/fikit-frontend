@@ -1,13 +1,15 @@
 import React from "react";
 import './LoginDiv.css';
+import axios from 'axios';
 
 import { useAuth } from '../../AuthenticationContext';
 import { useNavigate, NavigateFunction } from 'react-router-dom'; // Import NavigateFunction
 
 const LoginDiv: React.FC = () => {
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
     const [username, setUsername] = React.useState<string>('');
     const [password, setPassword] = React.useState<string>('');
-
     const { login } = useAuth();
     const navigate: NavigateFunction = useNavigate(); // Change the type of history to NavigateFunction
 
@@ -15,27 +17,21 @@ const LoginDiv: React.FC = () => {
     function handleLogin(event: React.FormEvent) {
         event.preventDefault(); 
 
-        fetch('auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                    username,
-                    password
-            })
+        axios.post(`${API_BASE_URL}/api/auth/login`, {
+            username: username,
+            password: password,
         })
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
+            return response.data;
         })
         .then(data => {
             localStorage.setItem('adminKey', data.adminKey);
             login(true);
             navigate('/');
         })
+        .catch(error => {
+            console.error(error);
+        });
     }
 
 

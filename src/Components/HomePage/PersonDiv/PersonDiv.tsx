@@ -1,9 +1,9 @@
 import React from 'react';
-import { Person } from '../../types';
+import { Person } from '../../../types';
 import './PersonDiv.css';
 
 
-const PersonDiv: React.FC<Person> = ({person}) => {
+const PersonDiv: React.FC<{person: Person}> = ({person}) => {
     const backendUrl = import.meta.env.VITE_PROFILEIMAGES_URL;
 
     return (
@@ -11,7 +11,7 @@ const PersonDiv: React.FC<Person> = ({person}) => {
             <div className='personTextImage'>
                 <div className='personImage' style={
                     {
-                        backgroundImage: `url(${backendUrl + person.imageFile})`
+                        backgroundImage: `url(${backendUrl + person.imageFileName})`
                     }
                 }></div>
                 <div className='personText'>

@@ -3,6 +3,11 @@
 
 
 :root {
+    --buttonColor: #2f4f4f;
+    --buttonHoverColor: #162424;
+
+    --changedFieldColor: #ffa500;
+
     /* DARK MODE */
     --backgroundColor: #212121;
     --barelyLighterBackgroundColor: #1c1c1c;
@@ -15,26 +20,20 @@
   
     --borderColor: #fff;
   
-    --buttonColor: #2f4f4f;
-    --buttonHoverColor: #162424;
-  
     --inputBackgroundColor: #f0f0f0;
     --inputHoverColor: #c5c5c5;
   
     --removeButtonColor: #ff0000;
     --removeButtonHoverColor: #cd0000;
   
-    --mainNotificationColor: #189618;
-  
-    --changedFieldColor: #ffa500;
-
-
     /* LIGHT MODE */
     --backgroundColor: #fff;
     --textColor: #000;
+
     --offWhite: #d8dad8;
     --glassColor: #0a0a0ac4;
     --headerGlassColor: #00000092;
+
     --contrastColor: #008000;
     --contrastColor2: #2f4f4f;
     --footerColor: #454545;
@@ -70,7 +69,7 @@ body {
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 4rem;
 }
 
 h2 {

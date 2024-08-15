@@ -6,6 +6,7 @@ import axios from "axios";
 import EditPerson from "../EditPerson/EditPerson";
 
 const EditGroup: React.FC<{ group: Group }> = ({ group }) => {
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
     const [showPeople, setShowPeople] = React.useState<boolean>(true);
     
     // Create local state for input fields
@@ -29,13 +30,15 @@ const EditGroup: React.FC<{ group: Group }> = ({ group }) => {
     function handleUpdateGroup() {
         console.log("Updated Group:", { year, nickname });
 
-        axios.post('/api/updateYear', {
-            updatedYear: {
+        axios.post(`${API_BASE_URL}/api/people/updateGroup`, {
+            updatedgroup: {
                 id: group.id,
                 year,
                 nickname
             }, adminKey: localStorage.getItem('adminKey')
         })
+
+        // document.location.reload();
     }
 
     return (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import './EditPerson.css'
 
 import { Person } from '../../../types'
@@ -46,6 +46,7 @@ const EditPerson: React.FC<{ person: Person, groupId: string }> = ({ person, gro
     };
 
     const updatePerson = (event: React.FormEvent) => {
+        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
         event.preventDefault(); // Prevent page reload
 
         const updatedPerson = {
@@ -60,16 +61,18 @@ const EditPerson: React.FC<{ person: Person, groupId: string }> = ({ person, gro
         const data = new FormData();
         data.append('personImage', image as Blob);
         data.append('updatedPerson', JSON.stringify(updatedPerson));
-        data.append('yearId', groupId);
-        data.append('adminKey', localStorage.getItem('adminKey') ?? '');
+        data.append('groupId', groupId);
+        if (localStorage.getItem('adminKey')) data.append('adminKey', localStorage.getItem('adminKey') ?? '');
+        else throw new Error('Admin key not found');
 
-        axios.post('/api/updatePerson', data)
-                    .then(response => {
-                        // if (response.status === 200) {
-                        //     console.log(image.name);
-                        // }
-                        window.location.reload();
-                    });
+        axios.post(`${API_BASE_URL}/api/people/updatePerson`, data)
+        .then(response => {
+            if (response.status === 200) {
+                console.log(response.data);
+                person = response.data;
+                setIsFormChanged(false);
+            }
+        });
     }
 
     const isFieldChanged = (value: string, originalValue: string) => {

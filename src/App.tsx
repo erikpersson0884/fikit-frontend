@@ -19,9 +19,10 @@ import AdminPanel from './Components/PatetosPage/AdminPanel'
 
 function App() {
     const [groups, setGroups] = React.useState<Group[]>([]);
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
 
     React.useEffect(() => {
-        fetch('/api/getAllPeople')
+        fetch(`${API_BASE_URL}/api/people/getAllGroups`)
           .then(response => {
                 if (!response.ok) {
                 throw new Error('Network response was not ok');
