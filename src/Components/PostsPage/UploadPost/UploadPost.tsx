@@ -1,6 +1,5 @@
 import React from "react";
 import './UploadPost.css';
-
 import axios from "axios";
 
 const UploadPost: React.FunctionComponent = () => {
@@ -22,6 +21,7 @@ const UploadPost: React.FunctionComponent = () => {
         axios.post(`${API_BASE_URL}/api/posts/addPost`, newPost)
             .then((response) => {
                 if (response.status === 200) {
+                    // Handle successful post upload
                 }
             })
             .catch((error) => {
@@ -34,7 +34,7 @@ const UploadPost: React.FunctionComponent = () => {
             <h2>Upload Post</h2>
             <hr />
             <form id="uploadPostForm" className="uploadPostForm" onSubmit={uploadPost}>
-                <div className="uploadPostImageDiv">
+                <div className="content-fit">
                     <img 
                         className="uploadPostImage" 
                         src={image ? URL.createObjectURL(image) : 'images/icons/image.svg'} 

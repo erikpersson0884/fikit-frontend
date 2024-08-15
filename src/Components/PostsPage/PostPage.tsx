@@ -13,7 +13,6 @@ const PostsPage: React.FC = () => {
     return (
         <div className='postPage'>
             <UploadPost />
-            <hr />
             <EditPosts />
         </div>
     );

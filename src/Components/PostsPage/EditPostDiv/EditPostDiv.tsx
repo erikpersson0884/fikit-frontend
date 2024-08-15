@@ -56,8 +56,8 @@ const EditPostDiv: React.FC<{ post: Post }> = ({ post }) => {
     return (
         <div className="editPostDiv">
             {isExpanded ?
-                <form className="postForm uploadPostForm " onSubmit={updatePost}>
-                    <div className="postImageDiv">
+                <form className="uploadPostForm " onSubmit={updatePost}>
+                    <div>
                         <img
                             className="uploadPostImage"
                             src={image ? URL.createObjectURL(image) : 'images/icons/image.svg'}
@@ -85,9 +85,16 @@ const EditPostDiv: React.FC<{ post: Post }> = ({ post }) => {
                         <textarea placeholder="Title" value={title} onChange={handleTitleChange} />
                         <textarea placeholder="Description" value={description} onChange={handleDescriptionChange}></textarea>
 
-                        <button className={(image?.name !== post.imageFileName || title===post.title || description === post.description)? 'button noButtonFormatting' : ' noButtonFormatting disabledButton'}>
-                        Upload
-                    </button>
+                        <div className="buttonGroup">
+                            <button className="cancelButton" onClick={() => setIsExpanded(false)}>
+                                Cancel
+                            </button>
+
+                            <button className={(image?.name !== post.imageFileName || title===post.title || description === post.description)? 'button noButtonFormatting' : ' noButtonFormatting disabledButton'}>
+                                Upload
+                            </button>
+                        </div>
+
                     </div>
                 </form>
 
@@ -97,6 +104,8 @@ const EditPostDiv: React.FC<{ post: Post }> = ({ post }) => {
                     <h3>{title}</h3>
                     <img src="images/icons/down.svg" alt="Expand" />
                 </button>
+
+
             }
         </div>
     )

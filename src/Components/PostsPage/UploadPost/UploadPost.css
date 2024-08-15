@@ -6,7 +6,7 @@
     align-items: center;
     gap: 1rem;
 
-    width: 50%;
+    width: 100%;
 }
 
 h2 {
@@ -19,14 +19,10 @@ h2 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: stretch; 
 
-    height: 18rem;
-    width: 27rem;
+    width: 70%;
     border: .1rem solid #000;
-}
-
-.uploadPostForm>div {
-    width: 50%;
 }
 
 .uploadPostImage {
@@ -40,8 +36,14 @@ h2 {
     align-items: center;
     align-items: center;
     gap: 1rem;
+    flex-grow: 1;
 
     padding: 1rem;
+    width: 50%;
+}
+
+.uploadPostImageDiv {
+    flex-shrink: 0;
 }
 
 .uploadPostImageLabel {
@@ -51,11 +53,15 @@ h2 {
     gap: .5rem;
 }
 
-.uploadPostForm .uploadPostTextDiv {
+.uploadPostTextDiv {
     background-color: #c4c4c4;
 
     box-sizing: border-box;
-    height: 100%;
+    height: auto;
+}
+
+.uploadPostTextDiv textarea {
+    width: 100%;
 }
 
 .uploadPostTextDiv textarea:nth-child(1) {

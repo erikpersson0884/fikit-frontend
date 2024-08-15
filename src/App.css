@@ -157,11 +157,27 @@ line {
     cursor: pointer;
 
     padding: .4rem;
+    border: none;
     border-radius: .1rem;
 }
 
 .button:hover {
     background: #192929;
+}
+
+.cancelButton {
+    background: var(--removeButtonColor);
+    color: #fff;
+
+    cursor: pointer;
+
+    padding: .4rem;
+    border: none;
+    border-radius: .1rem;
+}
+
+.cancelButton:hover {
+    background: var(--removeButtonHoverColor);
 }
 
 .disabledButton {

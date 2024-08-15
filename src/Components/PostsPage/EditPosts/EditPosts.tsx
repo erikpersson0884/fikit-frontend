@@ -23,7 +23,9 @@ const EditPosts: React.FC = () => {
     }, []);
 
     return (
-        <div className='editPosts'>
+        <div className='editPosts uploadPost'>
+            <h2>Edit Existing Post:</h2>
+            <hr />
             {posts.map((post) => (
                 <EditPostDiv key={post.id} post={post} />
             ))}
