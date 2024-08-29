@@ -22,3 +22,16 @@ export interface Post {
     description: string;
     imageFileName: string;
 }
+
+export interface Recipe {
+    name: string;
+    ingredients: Ingredient[];
+}
+
+export interface Ingredient {
+    name: string;
+    weight: number;
+    unit: string;
+    density: number;
+    packageSize: number | typeof NaN;
+}

@@ -17,6 +17,8 @@ import { AuthProvider } from './AuthenticationContext'
 import AdminPanel from './Components/PatetosPage/AdminPanel'
 import PostPage from './Components/PostsPage/PostPage'
 
+import ChocolateballCalculator from './Components/ChocolateballCalculator/ChocolateballCalculator'
+
 
 function App() {
     const [groups, setGroups] = React.useState<Group[]>([]);
@@ -61,6 +63,10 @@ function App() {
 
                     <Route path="/login" element={
                         <LoginDiv />
+                    }></Route>
+
+                    <Route path="/recepie" element={
+                        <ChocolateballCalculator />
                     }></Route>
 
                 </Routes>
