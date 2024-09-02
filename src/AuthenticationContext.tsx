@@ -1,21 +1,48 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 
-// Create Context
-const AuthContext = createContext({});
+
+interface AuthContextType {
+    isAuthenticated: boolean;
+    login: (token: string) => void;
+    logout: () => void;
+}
+
+
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 // Create a provider component
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
-  const login = () => setIsAuthenticated(true);
-  const logout = () => setIsAuthenticated(false);
+    useEffect(() => {
+        const token = localStorage.getItem('adminKey');
+        if (token) {
+            setIsAuthenticated(true);
+        }
+    }, []);
 
-  return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
+    const login = (token: string) => {
+      localStorage.setItem('adminKey', token);
+      setIsAuthenticated(true);
+  };
+
+    const logout = () => {
+        localStorage.removeItem('adminKey');
+        setIsAuthenticated(false);
+    };
+
+    return (
+        <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+            {children}
+        </AuthContext.Provider>
+    );
 };
 
 // Custom hook to use context
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => {
+    const context = useContext(AuthContext);
+    if (!context) {
+        throw new Error('useAuth must be used within an AuthProvider');
+    }
+    return context;
+};
