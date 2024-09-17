@@ -19,6 +19,7 @@ import AdminPanel from './Components/PatetosPage/AdminPanel'
 import PostPage from './Components/PostsPage/PostPage'
 
 import Frontpage from './Components/HomePage/FrontPage/Fontpage';
+import Joinpage from './Components/HomePage/Joinpage/Joinpage';
 
 import ChocolateballCalculator from './Components/ChocolateballCalculator/ChocolateballCalculator'
 
@@ -65,6 +66,10 @@ function App() {
 
                     <Route path="/recepies" element={
                         <ChocolateballCalculator />
+                    }></Route>
+
+                    <Route path="/join" element={
+                        <Joinpage />
                     }></Route>
 
 
