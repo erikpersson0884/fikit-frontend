@@ -1,0 +1,17 @@
+
+.pageFooter {
+    background: var(--headerColor);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-sizing: border-box;
+    padding: 1rem 3rem;
+    width: 100%;
+}
+
+.pageFooter a {
+    color: var(--contrastColor);
+}
+
+.pageFooter

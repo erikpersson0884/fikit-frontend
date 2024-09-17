@@ -6,6 +6,7 @@ const HomePageNavigation = () => {
         { title: 'Sittande', url: '#currentBoard' },
         { title: 'Inlägg', url: '#posts' },
         { title: 'Pateter', url: '#patetos' },
+        { title: 'Recept', url: 'recepie' },
         { title: 'Kontakt', url: '#footer' },
     ]
     return (

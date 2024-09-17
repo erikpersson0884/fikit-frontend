@@ -26,8 +26,6 @@ const useImageValidation = (imagePath: string) => {
 const PostDiv: React.FC<{post: Post}> = ({ post }) => {
     const backendUrl = import.meta.env.VITE_POSTIMAGES_URL;
     const imagePath = backendUrl + post.imageFileName;
-    console.log(imagePath)
-
     const isValidImage = useImageValidation(imagePath);
     
     return (

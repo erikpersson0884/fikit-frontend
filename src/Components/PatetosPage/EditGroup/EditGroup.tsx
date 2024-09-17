@@ -1,13 +1,13 @@
 import React from "react";
 import './EditGroup.css'
 
-import { Group, Person } from '../../types'
+import { Group, Person } from '../../../types';
 import axios from "axios";
 import EditPerson from "../EditPerson/EditPerson";
 
 const EditGroup: React.FC<{ group: Group }> = ({ group }) => {
     const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
-    const [showPeople, setShowPeople] = React.useState<boolean>(true);
+    const [showPeople, setShowPeople] = React.useState<boolean>(false);
     
     // Create local state for input fields
     const [year, setYear] = React.useState<string>(group.year);

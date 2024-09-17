@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route  } from 'react-router-dom'
 import { Group } from './types'
 
 import Header from './Components/Header/Header'
+import Footer from './Components/Footer/Footer'
 import HomePageNavigation from './Components/HomePage/HomePageNavigation/HomePageNavigation'
 import LoginDiv from './Components/auth/LoginDiv'
 
@@ -70,6 +71,7 @@ function App() {
                     }></Route>
 
                 </Routes>
+                <Footer />
             </BrowserRouter>
         </AuthProvider>
     )
