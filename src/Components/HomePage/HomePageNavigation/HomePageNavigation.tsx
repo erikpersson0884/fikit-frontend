@@ -7,6 +7,7 @@ const HomePageNavigation = () => {
         { title: 'Sittande', url: '/sittande' },
         { title: 'Inlägg', url: '/posts' },
         { title: 'Pateter', url: '/patetos' },
+        { title: 'Gå med', url: '/join' },
         { title: 'Recept', url: '/recepies' },
         { title: 'Kontakt', url: '/contact' },
     ]

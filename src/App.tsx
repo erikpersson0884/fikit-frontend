@@ -18,6 +18,8 @@ import { AuthProvider } from './AuthenticationContext'
 import AdminPanel from './Components/PatetosPage/AdminPanel'
 import PostPage from './Components/PostsPage/PostPage'
 
+import Frontpage from './Components/HomePage/FrontPage/Fontpage';
+
 import ChocolateballCalculator from './Components/ChocolateballCalculator/ChocolateballCalculator'
 
 
@@ -46,8 +48,10 @@ function App() {
                 <HomePageNavigation />
                 <Routes>
 
+                    <Route path="/" element={<Frontpage />} />
+
                     {groups[0] && 
-                        <Route path="/" element={<SittandeSection group={groups[0]} /> } />
+                        <Route path="/sittande" element={<SittandeSection group={groups[0]} /> } />
                     }
 
                     <Route path="/posts" element={

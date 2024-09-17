@@ -1,0 +1,22 @@
+
+
+.frontpage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+
+    width: 60%;
+    margin: 2rem auto;
+}
+
+.frontpage h1 {
+    font-family: 'Jacques Francois Shadow';
+    font-weight: 400;
+    text-align: center;
+
+}
+.frontpage img {
+    width: 100%;
+}
