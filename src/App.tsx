@@ -43,16 +43,27 @@ function App() {
         <AuthProvider>
             <BrowserRouter basename='/fikit-frontend/'>
                 <Header />
+                <HomePageNavigation />
                 <Routes>
-                    <Route path="/" element={
-                        <>
-                            <HomePageNavigation />
-                            {groups[0] && <SittandeSection group={groups[0]} />}
-                            <PostSection />
-                            <PatetosSection groups={groups.slice(1)} />
-                        </>
 
+                    {groups[0] && 
+                        <Route path="/" element={<SittandeSection group={groups[0]} /> } />
+                    }
+
+                    <Route path="/posts" element={
+                        <PostSection />
                     }></Route>
+
+                    <Route path="/patetos" element={
+                            <PatetosSection groups={groups.slice(1)} />
+                    }></Route>
+
+
+                    <Route path="/recepies" element={
+                        <ChocolateballCalculator />
+                    }></Route>
+
+
 
                     <Route path="/adminPanel" element={ 
                         <AdminPanel groups={groups} />
@@ -64,10 +75,6 @@ function App() {
 
                     <Route path="/login" element={
                         <LoginDiv />
-                    }></Route>
-
-                    <Route path="/recepie" element={
-                        <ChocolateballCalculator />
                     }></Route>
 
                 </Routes>

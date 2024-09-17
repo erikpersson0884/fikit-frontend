@@ -1,20 +1,21 @@
 import React from 'react';
 import './HomePageNavigation.css';
+import { Link } from 'react-router-dom';
 
 const HomePageNavigation = () => {
     const sections = [
-        { title: 'Sittande', url: '#currentBoard' },
-        { title: 'Inlägg', url: '#posts' },
-        { title: 'Pateter', url: '#patetos' },
-        { title: 'Recept', url: 'recepie' },
-        { title: 'Kontakt', url: '#footer' },
+        { title: 'Sittande', url: '/sittande' },
+        { title: 'Inlägg', url: '/posts' },
+        { title: 'Pateter', url: '/patetos' },
+        { title: 'Recept', url: '/recepies' },
+        { title: 'Kontakt', url: '/contact' },
     ]
     return (
         <nav className='homePageNavigation'>
             {sections.map((section, index) => (
-                <a className="noAFormatting hoverUnderSlide" key={index} href={section.url} tabIndex={index}>
+                <Link className="noAFormatting hoverUnderSlide" key={index} to={section.url} tabIndex={index}>
                     {section.title}
-                </a>
+                </Link>
             ))}
         </nav>
     );
