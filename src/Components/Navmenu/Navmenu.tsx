@@ -6,8 +6,8 @@ import { useAuth } from '../../AuthenticationContext';
 const Navmenu: React.FC = () => {
     const navItems = [
         { text: 'Home', link: '/' },
-        { text: 'Admin Panel', link: '/adminPanel' },
-        { text: 'Upload Post', link: '/uploadPost' }
+        { text: 'Manage People', link: '/managePeople' },
+
     ];
 
     const { isAuthenticated, user, logout } = useAuth();

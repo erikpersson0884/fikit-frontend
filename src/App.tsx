@@ -11,12 +11,10 @@ import LoginDiv from './Components/auth/LoginDiv'
 
 
 import SittandeSection from './Components/HomePage/SittandeSection/SittandeSection'
-import PostSection from './Components/HomePage/PostSection/PostSection'
 import PatetosSection from './Components/HomePage/PatetosSection/PatetosSection'
 
 import { AuthProvider } from './AuthenticationContext'
 import AdminPanel from './Components/PatetosPage/AdminPanel'
-import PostPage from './Components/PostsPage/PostPage'
 
 import Frontpage from './Components/HomePage/FrontPage/Fontpage';
 import Joinpage from './Components/HomePage/Joinpage/Joinpage';
@@ -54,10 +52,6 @@ function App() {
                         <Route path="/sittande" element={<SittandeSection group={groups[0]} /> } />
                     }
 
-                    <Route path="/posts" element={
-                        <PostSection />
-                    }></Route>
-
                     <Route path="/patetos" element={
                             <PatetosSection groups={groups.slice(1)} />
                     }></Route>
@@ -71,14 +65,8 @@ function App() {
                         <Joinpage />
                     }></Route>
 
-
-
-                    <Route path="/adminPanel" element={ 
+                    <Route path="/managePeople" element={ 
                         <AdminPanel groups={groups} />
-                    }></Route>
-
-                    <Route path="/uploadPost" element={
-                        <PostPage />
                     }></Route>
 
                     <Route path="/login" element={
