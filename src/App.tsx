@@ -20,6 +20,7 @@ import Frontpage from './Components/HomePage/FrontPage/Fontpage';
 import Joinpage from './Components/HomePage/Joinpage/Joinpage';
 
 import Recepies from './Components/HomePage/Recepies/Recepies';
+import ContactPage from './Components/HomePage/ContactPage/ContactPage';
 
 function App() {
     const [groups, setGroups] = React.useState<Group[]>([]);
@@ -64,6 +65,11 @@ function App() {
                     <Route path="/join" element={
                         <Joinpage />
                     }></Route>
+
+                    <Route path="/contact" element={
+                        <ContactPage />
+                    }></Route>
+
 
                     <Route path="/managePeople" element={ 
                         <AdminPanel groups={groups} />
