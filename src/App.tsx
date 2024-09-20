@@ -21,8 +21,7 @@ import PostPage from './Components/PostsPage/PostPage'
 import Frontpage from './Components/HomePage/FrontPage/Fontpage';
 import Joinpage from './Components/HomePage/Joinpage/Joinpage';
 
-import ChocolateballCalculator from './Components/ChocolateballCalculator/ChocolateballCalculator'
-
+import Recepies from './Components/HomePage/Recepies/Recepies';
 
 function App() {
     const [groups, setGroups] = React.useState<Group[]>([]);
@@ -65,7 +64,7 @@ function App() {
 
 
                     <Route path="/recepies" element={
-                        <ChocolateballCalculator />
+                        <Recepies />
                     }></Route>
 
                     <Route path="/join" element={

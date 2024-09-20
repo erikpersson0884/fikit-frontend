@@ -1,8 +1,30 @@
 
 .chocolateballCalculator {
+    background-color: #D9D9D9;
+
+    font-family: 'Nunito';
+
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.recepieInputDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: .8rem;
+
+    width: max-content;
+}
+
+.recepieInputDiv>input {
+    width: 3rem;
+    padding: .2rem .5rem;
 }
 
 .recepie {

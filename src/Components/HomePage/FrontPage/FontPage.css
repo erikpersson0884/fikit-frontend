@@ -1,5 +1,3 @@
-
-
 .frontpage {
     display: flex;
     flex-direction: column;
@@ -15,8 +13,8 @@
     font-family: 'Jacques Francois Shadow';
     font-weight: 400;
     text-align: center;
-
 }
+
 .frontpage img {
     width: 100%;
 }

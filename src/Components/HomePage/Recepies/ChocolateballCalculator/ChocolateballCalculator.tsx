@@ -11,18 +11,10 @@ const ChocolateballCalculator = () => {
     /// https://www.arla.se/recept/chokladbollar/
 
     const [amountOfBalls, setAmountOfBalls] = React.useState<number>(250);
-    // localStorage.getItem("amountOfBalls") ? setAmountOfBalls(Number(localStorage.getItem("amountOfBalls"))) : setAmountOfBalls(0);
 
     const recepie: Recipe = {
         name: "Chokladbollar",
         ingredients: [
-            // {
-            //     name: "Havregryn", 
-            //     weight: 0.282, 
-            //     unit: "dl",
-            //     density: 0.35, // g/ml
-            //     packageSize: 1500
-            // },
             {
                 name: "Havregryn", 
                 weight: 28.2, 
@@ -131,10 +123,10 @@ const ChocolateballCalculator = () => {
         <div className='chocolateballCalculator'>
             <h1>Chokladbollskalkylatorn 3000</h1>
             <div>
-                <p>Skapad av HOM BRE, kodad av Göken</p>
+                <p>Skapad av HOM BRE, kodad av Göken </p>
             </div>
 
-            <div>
+            <div className='recepieInputDiv'>
                 <label>Antal bollar:</label>
                 <input type="number" id="antalBollar" value={amountOfBalls} onChange={handleAmountChange} />
                 <p>st</p>
