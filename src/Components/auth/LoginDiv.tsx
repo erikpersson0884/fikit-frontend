@@ -25,8 +25,7 @@ const LoginDiv: React.FC = () => {
             return response.data;
         })
         .then(data => {
-            localStorage.setItem('adminKey', data.adminKey);
-            login(true);
+            login(data.adminKey);
             navigate('/');
         })
         .catch(error => {

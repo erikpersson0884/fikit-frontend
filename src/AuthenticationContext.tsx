@@ -22,9 +22,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }, []);
 
     const login = (token: string) => {
-      localStorage.setItem('adminKey', token);
-      setIsAuthenticated(true);
-  };
+        localStorage.setItem('adminKey', token);
+        setIsAuthenticated(true);
+    };
 
     const logout = () => {
         localStorage.removeItem('adminKey');

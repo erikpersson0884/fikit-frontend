@@ -1,7 +1,7 @@
 import React from 'react';
 import './ChocolateballCalculator.css';
 
-import { Recipe, Ingredient } from '../../types';
+import { Recipe, Ingredient } from '../../../../types';
 
 const ChocolateballCalculator = () => {
 
