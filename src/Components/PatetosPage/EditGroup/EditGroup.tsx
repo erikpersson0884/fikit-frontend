@@ -70,7 +70,7 @@ const EditGroup: React.FC<{ group: Group }> = ({ group }) => {
             }
 
             <button className="noButtonFormatting expandGroup" onClick={toggleShowPeople}>
-                <img src={showPeople ? "/images/icons/up.svg" : "/images/icons/down.svg"} alt="Toggle people" />
+                <img src={showPeople ? "images/icons/up.svg" : "images/icons/down.svg"} alt="Toggle people" />
             </button>
         </div>
     );
