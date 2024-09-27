@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Chokladbollar",
+        "ingredients": [
+            {
+                "name": "Havregryn", 
+                "weight": 28.2, 
+                "unit": "dl",
+                "density": 1,
+                "packageSize": 1500
+            },
+            {
+                "name": "Socker", 
+                "weight": 7, 
+                "unit": "dl",
+                "density": 0.8,
+                "packageSize": 2000
+            },
+            {
+                "name": "Kakao", 
+                "weight": 1.07, 
+                "unit": "msk",
+                "density": 0.4,
+                "packageSize": 250
+            },
+            {
+                "name": "Kaffe", 
+                "weight": 0.68, 
+                "unit": "msk",
+                "density": 0.38,
+                "packageSize": null
+            },
+            {
+                "name": "Smör", 
+                "weight": 8.824, 
+                "unit": "g",
+                "density": 0.95,
+                "packageSize": 500
+            },
+            {
+                "name": "Vaniljsocker", 
+                "weight": 0.178, 
+                "unit": "tsk",
+                "density": 0.6,
+                "packageSize": 140
+            },
+            {
+                "name": "Karamellfärg",
+                "weight": 0.02,
+                "unit": "ml",
+                "density": 1,
+                "packageSize": 30
+            }
+        ]
+    }
+]

@@ -1,4 +1,3 @@
-import React from 'react';
 import './HomePageNavigation.css';
 import { Link } from 'react-router-dom';
 
@@ -7,7 +6,7 @@ const HomePageNavigation = () => {
         { title: 'Sittande', url: '/sittande' },
         { title: 'Pateter', url: '/patetos' },
         { title: 'Gå med', url: '/join' },
-        { title: 'Recept', url: '/recepies' },
+        { title: 'Recept', url: '/recipes' },
         { title: 'Kontakt', url: '/contact' },
     ]
     return (

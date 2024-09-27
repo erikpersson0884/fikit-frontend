@@ -23,9 +23,10 @@ export interface Post {
     imageFileName: string;
 }
 
-export interface Recipe {
+export interface RecipeT {
     name: string;
     ingredients: Ingredient[];
+    instructions?: Instruction[];
 }
 
 export interface Ingredient {
@@ -34,4 +35,9 @@ export interface Ingredient {
     unit: string;
     density: number;
     packageSize: number | typeof NaN;
+}
+
+export interface Instruction {
+    step:number;
+    description: string;
 }

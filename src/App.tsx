@@ -19,7 +19,7 @@ import AdminPanel from './Components/PatetosPage/AdminPanel'
 import Frontpage from './Components/HomePage/FrontPage/Fontpage';
 import Joinpage from './Components/HomePage/Joinpage/Joinpage';
 
-import Recepies from './Components/HomePage/Recepies/Recepies';
+import RecipesPage from './Components/HomePage/Recepies/RecipesPage';
 import ContactPage from './Components/HomePage/ContactPage/ContactPage';
 
 function App() {
@@ -58,8 +58,8 @@ function App() {
                     }></Route>
 
 
-                    <Route path="/recepies" element={
-                        <Recepies />
+                    <Route path="/recipes" element={ // 
+                        <RecipesPage />
                     }></Route>
 
                     <Route path="/join" element={
