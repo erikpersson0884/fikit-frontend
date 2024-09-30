@@ -1,0 +1,15 @@
+
+
+.addPatetosGroup {
+    background-color: grey;
+    color: #fff;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    width: 80%;
+    padding: 1rem;
+}

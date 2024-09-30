@@ -11,7 +11,7 @@ const EditGroup: React.FC<{ group: Group }> = ({ group }) => {
     
     // Create local state for input fields
     const [year, setYear] = React.useState<string>(group.year);
-    const [nickname, setNickname] = React.useState<string>(group.nickname);
+    const [name, setName] = React.useState<string>(group.name);
 
     // Toggle function
     function toggleShowPeople() {
@@ -24,7 +24,7 @@ const EditGroup: React.FC<{ group: Group }> = ({ group }) => {
     }
 
     function handleNicknameChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setNickname(event.target.value);
+        setName(event.target.value);
     }
 
     function handleUpdateGroup() {
@@ -32,7 +32,7 @@ const EditGroup: React.FC<{ group: Group }> = ({ group }) => {
             updatedgroup: {
                 id: group.id,
                 year,
-                nickname
+                name
             }, adminKey: localStorage.getItem('adminKey')
         })
 
@@ -54,7 +54,7 @@ const EditGroup: React.FC<{ group: Group }> = ({ group }) => {
                 <input 
                     id={`editGroupNickname-${group.id}`} 
                     placeholder="Nickname" 
-                    value={nickname} 
+                    value={name} 
                     onChange={handleNicknameChange} 
                     className="noInputFormatting" 
                 />

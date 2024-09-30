@@ -72,7 +72,7 @@ function App() {
 
 
                     <Route path="/managePeople" element={ 
-                        <AdminPanel groups={groups} />
+                        <AdminPanel groups={groups} setGroups={setGroups} />
                     }></Route>
 
                     <Route path="/login" element={
