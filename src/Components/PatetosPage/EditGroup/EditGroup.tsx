@@ -4,8 +4,9 @@ import './EditGroup.css'
 import { Group, Person } from '../../../types';
 import axios from "axios";
 import EditPerson from "../EditPerson/EditPerson";
+import { setgroups } from "process";
 
-const EditGroup: React.FC<{ group: Group }> = ({ group }) => {
+const EditGroup: React.FC<{ group: Group; addPerson: any }> = ({ group, addPerson }) => {
     const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
     const [showPeople, setShowPeople] = React.useState<boolean>(false);
     
@@ -42,23 +43,32 @@ const EditGroup: React.FC<{ group: Group }> = ({ group }) => {
     return (
         <div className="EditGroup">
             <header>
-                <label htmlFor={`editGroupYear-${group.id}`}>Year:</label>
-                <input 
-                    id={`editGroupYear-${group.id}`} 
-                    placeholder="Year" 
-                    value={year} 
-                    onChange={handleYearChange} 
-                    className="noInputFormatting"
-                />
-                <label htmlFor={`editGroupNickname-${group.id}`}>Nickname:</label>
-                <input 
-                    id={`editGroupNickname-${group.id}`} 
-                    placeholder="Nickname" 
-                    value={name} 
-                    onChange={handleNicknameChange} 
-                    className="noInputFormatting" 
-                />
-                <button className="updateGroupButton noButtonFormatting" onClick={handleUpdateGroup}>Update Group</button>
+                <div>
+                    <label htmlFor={`editGroupYear-${group.id}`}>Year:</label>
+                    <input 
+                        id={`editGroupYear-${group.id}`} 
+                        placeholder="Year" 
+                        value={year} 
+                        onChange={handleYearChange} 
+                        className="noInputFormatting"
+                    />
+                </div>
+                <div>
+                    <label htmlFor={`editGroupNickname-${group.id}`}>Nickname:</label>
+                    <input 
+                        id={`editGroupNickname-${group.id}`} 
+                        placeholder="Nickname" 
+                        value={name} 
+                        onChange={handleNicknameChange} 
+                        className="noInputFormatting" 
+                    />
+                </div>
+                <button 
+                    className="updateGroupButton noButtonFormatting" 
+                    onClick={handleUpdateGroup}
+                >
+                    Update Group
+                </button>
             </header>
 
             {showPeople && 
@@ -66,8 +76,15 @@ const EditGroup: React.FC<{ group: Group }> = ({ group }) => {
                     {group.people.map((person: Person, index: number) => (
                         <EditPerson key={index} person={person} groupId={group.id} />
                     ))}
+
+                    <button onClick={() => addPerson(group.id)}>
+                        <img src="images/icons/add.svg" alt="add person" className="addPersonIcon" />
+                        <p className="addPersonText">Add person</p>
+                    </button>
                 </div>
             }
+
+
 
             <button className="noButtonFormatting expandGroup" onClick={toggleShowPeople}>
                 <img src={showPeople ? "images/icons/up.svg" : "images/icons/down.svg"} alt="Toggle people" />

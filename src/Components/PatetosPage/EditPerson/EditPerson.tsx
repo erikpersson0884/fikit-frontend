@@ -46,6 +46,7 @@ const EditPerson: React.FC<{ person: Person, groupId: string }> = ({ person, gro
     };
 
     const updatePerson = (event: React.FormEvent) => {
+
         const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
         event.preventDefault(); // Prevent page reload
 
@@ -88,6 +89,7 @@ const EditPerson: React.FC<{ person: Person, groupId: string }> = ({ person, gro
 
         setIsFormChanged(isFormChanged);
     }, [name, nick, post, url, description, person]);
+
 
     return (
         <form className="editPerson" onSubmit={updatePerson}>

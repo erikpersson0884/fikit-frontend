@@ -3,8 +3,7 @@ import './AdminPanel.css'
 import EditGroup from './EditGroup/EditGroup';
 import AddGroupDiv from './AddGroupDiv';
 
-import { Group } from '../../types'
-import { setgroups } from 'process';
+import { Group, Person } from '../../types'
 
 const AdminPanel: React.FC<{groups: Group[], setGroups: React.Dispatch<React.SetStateAction<Group[]>>}> = ({groups, setGroups}) => {
 
@@ -35,11 +34,34 @@ const AdminPanel: React.FC<{groups: Group[], setGroups: React.Dispatch<React.Set
         })
     }
 
+    const addPerson = (groupId: string) => {
+        fetch(`${VITE_API_BASE_URL}/api/people/addPerson`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                adminKey: localStorage.getItem('adminKey'),
+                groupId: groupId,
+            }),
+        }).then (response => response.json())
+        .then((newPerson: Person) => {
+            const newGroups = groups.map(group => {
+                if (group.id === groupId) {
+                    group.people.push(newPerson);
+                }
+                return group;
+            })
+            setGroups(newGroups);
+        })
+    }
+
     return (
         <div className='adminPanel'>
             {groups.map((group: Group, index: number) => (
-                <EditGroup key={index} group={group} />
+                <EditGroup key={index} group={group} addPerson={addPerson} />
             ))}
+
             <AddGroupDiv addGroup={addGroup} />
         </div>
     )

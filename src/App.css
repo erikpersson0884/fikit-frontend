@@ -138,24 +138,16 @@ line {
 }
 
 
-.adminPanel {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: 3rem;
-
-    width: 100%;
-    height: max-content;
-    margin-top: 2rem;
-}
-
-
-
 
 .button {
     background: darkslategray;
     color: #fff;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: .4rem;
 
     cursor: pointer;
 

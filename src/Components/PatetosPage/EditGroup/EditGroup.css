@@ -7,18 +7,17 @@
     flex-direction: column;
     justify-content: flex-start;
 
-    width: 80%;
+    width: 100%;
 }
 
 .EditGroup header {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
 
     border-bottom: #000 solid .1rem;
-    margin-inline: 1rem;
 }
 
 .EditGroup header input {
@@ -52,7 +51,7 @@
     color: #fff;
 
     padding: .5rem;
-    margin-left: auto;
+    margin-inline: auto 1rem;
 }
 
 .updateGroupButton:hover {
