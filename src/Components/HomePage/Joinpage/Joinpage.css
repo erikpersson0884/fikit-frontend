@@ -19,7 +19,7 @@
 .joinpage section {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
 
     max-width: 40ch;
 }
