@@ -26,7 +26,7 @@ export interface Post {
 export interface RecipeT {
     name: string;
     ingredients: Ingredient[];
-    instructions?: Instruction[];
+    instructions?: string[];
 }
 
 export interface Ingredient {
@@ -35,9 +35,4 @@ export interface Ingredient {
     unit: string;
     density: number;
     packageSize: number | typeof NaN;
-}
-
-export interface Instruction {
-    step:number;
-    description: string;
 }

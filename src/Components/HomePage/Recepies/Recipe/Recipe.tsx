@@ -1,29 +1,9 @@
-import React, { useState } from 'react';
-import './ChocolateballCalculator.css';
+import React from 'react';
+import './Recipe.css';
 
 import { RecipeT, Ingredient } from '../../../../types';
 
-const Recipe = ({ recipe }: { recipe: RecipeT }) => {
-    const [show, setShow] = useState(false);
-
-    return (
-        <>
-            {show ?
-                <ExpandedRecipe recipe={recipe} noShow={setShow} />
-                :
-                <div onClick={() => setShow(!show)} style={{border:"1px solid black"}}>
-                    Expandera {recipe.name}
-                </div>
-            }
-        </>
-    );
-}
-
-
-
-
-const ExpandedRecipe = ({ recipe, noShow }: { recipe: RecipeT, noShow: (b: boolean) => void }) => {
-
+const Recipe = ({ recipe, unSelect }: { recipe: RecipeT, unSelect: any }) => {
     const [amountOfBalls, setAmountOfBalls] = React.useState<number>(250);
 
     const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -77,20 +57,33 @@ const ExpandedRecipe = ({ recipe, noShow }: { recipe: RecipeT, noShow: (b: boole
         }
     }
 
-
     return (
         <div className='chocolateballCalculator'>
-            <h1>{recipe.name}skalkylatorn 3000</h1>
-            <div>
-                <p>Skapad av HOM BRE, kodad av Göken </p>
-            </div>
-            <button onClick={() => noShow(false)}>Stäng recept</button>
+            <button className='closeRecepieButton noButtonFormatting' onClick={unSelect}>
+                <img src="images/icons/close.svg" alt="close" />
+            </button>
+
+            <h1>{recipe.name}</h1>
 
             <div className='recepieInputDiv'>
-                <label>Antal bollar:</label>
+                <label>Antal:</label>
                 <input type="number" id="antalBollar" value={amountOfBalls} onChange={handleAmountChange} />
                 <p>st</p>
             </div>
+
+            {recipe.instructions?
+                <div className='instructions'>
+                    <h4>Instruktioner</h4>
+                    <ol>
+                    {recipe.instructions.map((instruction, index) => 
+                            <li key={index}>
+                                {instruction}
+                            </li>
+                    )}  
+                    </ol>
+                </div>
+                : null
+            }
 
             <div className='recepie'>
                 <header className="recepieIngredient">
