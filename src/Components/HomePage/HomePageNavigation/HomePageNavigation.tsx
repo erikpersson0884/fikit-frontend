@@ -1,5 +1,5 @@
 import './HomePageNavigation.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const HomePageNavigation = () => {
     const sections = [
@@ -9,10 +9,18 @@ const HomePageNavigation = () => {
         { title: 'Recept', url: '/recipes' },
         { title: 'Kontakt', url: '/contact' },
     ]
+
+    const location = useLocation();
+
     return (
         <nav className='homePageNavigation'>
             {sections.map((section, index) => (
-                <Link className="noAFormatting hoverUnderSlide" key={index} to={section.url} tabIndex={index}>
+                <Link 
+                    className={`noAFormatting hoverUnderSlide ${location.pathname === section.url ? 'currentPage' : ''}`}
+                    key={index} 
+                    to={section.url} 
+                    tabIndex={index}
+                >
                     {section.title}
                 </Link>
             ))}

@@ -7,7 +7,8 @@ import PeopleDiv from "../PeopleDiv/PeopleDiv";
 const PatetosSection: React.FC<{groups: Group[]}> = ({groups}) => {    
     return (
         <section id="patetosSection">
-            <h2>Groups</h2>
+            <h2>Pateter</h2>
+
             <div id="patetos">
                 {groups.map((group: Group, index: number) => (
                     <PeopleDiv key={index} group={group} />

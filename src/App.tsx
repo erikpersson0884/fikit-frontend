@@ -19,7 +19,7 @@ import AdminPanel from './Components/PatetosPage/AdminPanel'
 import Frontpage from './Components/HomePage/FrontPage/Fontpage';
 import Joinpage from './Components/HomePage/Joinpage/Joinpage';
 
-import RecipesPage from './Components/HomePage/Recepies/RecipesPage';
+import RecipesPage from './Components/HomePage/Recipes/RecipesPage';
 import ContactPage from './Components/HomePage/ContactPage/ContactPage';
 
 function App() {

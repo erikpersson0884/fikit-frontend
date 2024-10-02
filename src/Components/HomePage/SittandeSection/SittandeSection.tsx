@@ -7,7 +7,7 @@ const SittandeSection: React.FC<{group: Group}> = ({group}) => {
     return (
         <section id="sittandeSection">
             <h2>Sittande</h2>
-            <div id="patetos">
+            <div>
                 <PeopleDiv group={group} />
             </div>
         </section>
