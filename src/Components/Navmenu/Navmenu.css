@@ -12,5 +12,6 @@
 }
 
 .Navmenu>* {
-    color: var(--linkColor)
+    color: var(--linkColor);
 }
+

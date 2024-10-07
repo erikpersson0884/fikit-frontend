@@ -26,15 +26,9 @@ const Navmenu: React.FC = () => {
                     <button className='noButtonFormatting hoverUnderSlide' onClick={logout}>Log Out</button>
                 </>
             ) : (
-                <>
                 <Link to='/login' className='noAFormatting hoverUnderSlide'>
                     Login
                 </Link>
-
-                <a href={`https://auth.chalmers.it/oauth2/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=code&scope=openid email profile`}>
-                    Login with Gamma
-                </a>
-                </>
             )}
         </nav>
     );
