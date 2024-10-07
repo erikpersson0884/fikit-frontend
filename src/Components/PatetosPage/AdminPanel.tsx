@@ -18,8 +18,10 @@ const AdminPanel: React.FC<{groups: Group[], setGroups: React.Dispatch<React.Set
             },
             body: JSON.stringify({
                 "adminKey" : localStorage.getItem('adminKey'),
-                "year": year,
-                "name": name
+                "newGroup": {
+                    "year": year,
+                    "name": name
+                }
             }),
         })
         .then(response => {
@@ -59,7 +61,7 @@ const AdminPanel: React.FC<{groups: Group[], setGroups: React.Dispatch<React.Set
     return (
         <div className='adminPanel'>
             {groups.map((group: Group, index: number) => (
-                <EditGroup key={index} group={group} addPerson={addPerson} />
+                <EditGroup key={index} group={group} addPerson={addPerson} setGroups={setGroups} groups={groups} />
             ))}
 
             <AddGroupDiv addGroup={addGroup} />

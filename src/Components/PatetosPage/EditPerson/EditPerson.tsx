@@ -4,7 +4,7 @@ import './EditPerson.css'
 import { Person } from '../../../types'
 import axios from "axios";
 
-const EditPerson: React.FC<{ person: Person, groupId: string }> = ({ person, groupId }) => {
+const EditPerson: React.FC<{ person: Person, groupId: string, deletePerson: (id: string) => void }> = ({ person, groupId, deletePerson }) => {
     const [image, setImage] = React.useState<File | null>(null);
     const [name, setName] = React.useState<string>(person.name);
     const [nick, setNick] = React.useState<string>(person.nick);
@@ -90,6 +90,23 @@ const EditPerson: React.FC<{ person: Person, groupId: string }> = ({ person, gro
         setIsFormChanged(isFormChanged);
     }, [name, nick, post, url, description, person]);
 
+    const handleDeletePerson = () => {
+        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
+        axios.post(`${API_BASE_URL}/api/people/deletePerson`, {
+            personId: person.id,
+            groupId,
+            adminKey: localStorage.getItem('adminKey')
+        })
+        .then(response => {
+            console.log(response);
+            deletePerson(person.id);
+        })
+        .catch(error => {
+            console.error("There was an error deleting the person!", error);
+        });
+    }
+
+
 
     return (
         <form className="editPerson" onSubmit={updatePerson}>
@@ -136,13 +153,18 @@ const EditPerson: React.FC<{ person: Person, groupId: string }> = ({ person, gro
                 onChange={handleDescriptionChange}
                 className={isFieldChanged(description, person.description)}
             ></textarea>
+
+            {   
+                isFormChanged && 
             <button 
                 className={`button noButtonFormatting ${isFormChanged ? "" : "invisible"}`} 
                 type="submit">
                 Update Person
             </button>
+            }
             
-            <button className="button noButtonFormatting">Remove</button>
+            <button className="button noButtonFormatting" onClick={handleDeletePerson}>Delete Person</button>
+            
         </form>
     )
 }

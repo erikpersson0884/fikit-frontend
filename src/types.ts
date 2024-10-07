@@ -2,7 +2,7 @@
 export interface Group {
     id: string;
     name: string;
-    year: string;
+    year: number;
     people: Person[];
 }
 
