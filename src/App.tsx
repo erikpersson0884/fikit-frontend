@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 
 import { BrowserRouter, Routes, Route  } from 'react-router-dom'
-import { Group } from './types'
+import { Group, RecipeT } from './types'
 
 import Header from './Components/Header/Header'
 import Footer from './Components/Footer/Footer'
@@ -15,6 +15,7 @@ import PatetosSection from './Components/HomePage/PatetosSection/PatetosSection'
 
 import { AuthProvider } from './AuthenticationContext'
 import AdminPanel from './Components/PatetosPage/AdminPanel'
+import ManageRecipes from './Components/ManageRecipes/ManageRecipes'
 
 import Frontpage from './Components/HomePage/FrontPage/Fontpage';
 import Joinpage from './Components/HomePage/Joinpage/Joinpage';
@@ -40,6 +41,23 @@ function App() {
             .catch(error => console.error('Error fetching data:', error));
     }, []);
 
+    const [recipes, setRecipes] = React.useState<RecipeT[]>([]);
+
+    React.useEffect(() => {
+        fetch(`${API_BASE_URL}/api/recipes/getAllRecipes`)
+          .then(response => {
+                if (!response.ok) {
+                throw new Error('Network response was not ok');
+                }
+                return response.json();
+                })
+                .then(data => {
+                    setRecipes(data);
+                })
+            .catch(error => console.error('Error fetching data:', error));
+    }, []);
+
+
     return (
         <AuthProvider>
             <BrowserRouter basename='/fikit-frontend/'>
@@ -59,7 +77,7 @@ function App() {
 
 
                     <Route path="/recipes" element={ // 
-                        <RecipesPage />
+                        <RecipesPage recipes={recipes}/>
                     }></Route>
 
                     <Route path="/join" element={
@@ -73,6 +91,10 @@ function App() {
 
                     <Route path="/managePeople" element={ 
                         <AdminPanel groups={groups} setGroups={setGroups} />
+                    }></Route>
+
+                    <Route path='/manageRecipes' element={
+                        <ManageRecipes recipes={recipes} setRecipes={setRecipes} />
                     }></Route>
 
                     <Route path="/login" element={

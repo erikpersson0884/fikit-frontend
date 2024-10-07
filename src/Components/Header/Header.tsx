@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Navmenu from '../Navmenu/Navmenu';
+import Navmenu from './Navmenu/Navmenu';
 import {Link} from 'react-router-dom';
 
 import './Header.css';

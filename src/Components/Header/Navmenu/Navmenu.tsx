@@ -1,16 +1,17 @@
 import React from 'react';
 import './Navmenu.css';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../AuthenticationContext';
+import { useAuth } from '../../../AuthenticationContext';
 
 const Navmenu: React.FC = () => {
     const navItems = [
         { text: 'Home', link: '/' },
         { text: 'Manage People', link: '/managePeople' },
+        { text: 'Manage Recipes', link: '/manageRecipes' },
 
     ];
 
-    const { isAuthenticated, user, logout } = useAuth();
+    const { isAuthenticated, logout } = useAuth();
     const client_id = import.meta.env.VITE_CLIENT_ID;
     const redirect_uri = import.meta.env.VITE_REDIRECT_URI;
 

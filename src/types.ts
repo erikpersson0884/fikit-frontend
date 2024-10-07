@@ -24,9 +24,11 @@ export interface Post {
 }
 
 export interface RecipeT {
+    id: string;
     name: string;
+    author: string;
     ingredients: Ingredient[];
-    instructions?: string[];
+    instructions: string[];
 }
 
 export interface Ingredient {

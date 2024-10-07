@@ -3,23 +3,18 @@ import "./Recipes.css";
 
 
 import Recipe from "./Recipe/Recipe";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { RecipeT } from "../../../types";
 
+interface RecipePreviewProps {
+    recipes: RecipeT[];
+}
 
-
-const RecipesPage = () => {
-    const [recipes, setRecipes] = useState<RecipeT[]>([]);
-    useEffect(()=>{
-        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
-
-    fetch(API_BASE_URL + '/api/recipe/getAllRecipes')
-    .then(response => response.json()).then(data => {   
-        setRecipes(data);
-    });
-    },[]);
+const RecipesPage: React.FC<RecipePreviewProps> = ({recipes}) => {
     
     let [selectedRecipe, setSelectedRecipe] = useState<RecipeT | undefined>(undefined);
+
+    console.log(recipes);
     
     
     return (
