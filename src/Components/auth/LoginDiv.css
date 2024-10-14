@@ -1,13 +1,43 @@
 
+.loginDivShadowBox {
+    background-color: #000000b3;
 
-.loignDiv form{
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
 }
 
-.loignDiv form div {
+.loginForm {
+    background-color: var(--offWhite);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+
+    height: 15rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.loginForm h2 {
+    text-align: center;
+}
+
+.loginForm div {
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
+}
+
+.loginForm button {
+    width: 50%;
 }

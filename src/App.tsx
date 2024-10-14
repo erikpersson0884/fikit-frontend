@@ -57,14 +57,17 @@ function App() {
             .catch(error => console.error('Error fetching data:', error));
     }, []);
 
+    const [showLoginDiv, setShowLoginDiv] = React.useState<boolean>(false);
+
 
     return (
         <AuthProvider>
             <BrowserRouter basename='/fikit-frontend/'>
-                <Header />
-                <HomePageNavigation />
-                <Routes>
+                <Header showLoginDiv={() => setShowLoginDiv(true)}/>
+                <HomePageNavigation/>
+                <LoginDiv showLoginDiv={showLoginDiv} setShowLoginDiv={setShowLoginDiv} />
 
+                <Routes>
                     <Route path="/" element={<Frontpage />} />
 
                     {groups[0] && 
@@ -95,10 +98,6 @@ function App() {
 
                     <Route path='/manageRecipes' element={
                         <ManageRecipes recipes={recipes} setRecipes={setRecipes} />
-                    }></Route>
-
-                    <Route path="/login" element={
-                        <LoginDiv />
                     }></Route>
 
                 </Routes>

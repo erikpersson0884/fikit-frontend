@@ -1,6 +1,8 @@
 
 .pageFooter {
-    background: var(--headerColor);
+    background: #141414;
+    color: #fff;
+
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -3,16 +3,18 @@ import './LoginDiv.css';
 import axios from 'axios';
 
 import { useAuth } from '../../AuthenticationContext';
-import { useNavigate, NavigateFunction } from 'react-router-dom'; // Import NavigateFunction
 
-const LoginDiv: React.FC = () => {
+interface LoginDivProps {
+    showLoginDiv: boolean;
+    setShowLoginDiv: (value: boolean) => void;
+}
+
+const LoginDiv: React.FC<LoginDivProps> = ({showLoginDiv, setShowLoginDiv}) => {
     const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
     const [username, setUsername] = React.useState<string>('');
     const [password, setPassword] = React.useState<string>('');
     const { login } = useAuth();
-    const navigate: NavigateFunction = useNavigate(); // Change the type of history to NavigateFunction
-
 
     function handleLogin(event: React.FormEvent) {
         event.preventDefault(); 
@@ -26,37 +28,36 @@ const LoginDiv: React.FC = () => {
         })
         .then(data => {
             login(data.adminKey);
-            navigate('/');
+            setShowLoginDiv(false);
+
         })
         .catch(error => {
             console.error(error);
         });
     }
 
-
     return (
-        <aside className="loignDiv">
-            <h2>Login</h2>
-            <form onSubmit={handleLogin}> {/* Use onSubmit instead of onClick */}
-                <div>
-                    <label htmlFor="loginUsername">Username:</label>
-                    <input 
-                        id="loginUsername" 
-                        type="username" 
-                        onChange={e => setUsername(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="loginPassword">Password:</label>
-                    <input 
-                        id="loginPassword" 
-                        type="password" 
-                        onChange={e => setPassword(e.target.value)}
-                    />
-                </div>
-                <button type="submit">Login</button>
-            </form>
-        </aside>
+        <>
+            {showLoginDiv && (
+                <aside className="loginDivShadowBox" onClick={() => setShowLoginDiv(false)}>
+                    <form className="loginForm" onClick={(e) => e.stopPropagation()} onSubmit={handleLogin}>
+                        <h2>Login</h2>
+
+                        <div>
+                            <label htmlFor="loginUsername">Username:</label>
+                            <input id="loginUsername" type="username" onChange={e => setUsername(e.target.value)}/>
+                        </div>
+
+                        <div>
+                            <label htmlFor="loginPassword">Password:</label>
+                            <input id="loginPassword" type="password" onChange={e => setPassword(e.target.value)}/>
+                        </div>
+
+                        <button type="submit">Login</button>
+                    </form>
+                </aside>
+            )}
+        </>
     );
 }
 

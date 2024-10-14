@@ -1,5 +1,4 @@
 
-
 .navmenu {
     display: flex;
     justify-content: space-between;
@@ -10,8 +9,3 @@
     top: 1rem;
     right: 2rem;
 }
-
-.Navmenu>* {
-    color: var(--linkColor);
-}
-

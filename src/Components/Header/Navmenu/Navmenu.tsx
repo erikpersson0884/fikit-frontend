@@ -3,17 +3,16 @@ import './Navmenu.css';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../../AuthenticationContext';
 
-const Navmenu: React.FC = () => {
+interface NavMenuProps {
+    showLoginDiv: () => void;
+}
+const Navmenu: React.FC<NavMenuProps> = ({showLoginDiv}) => {
     const navItems = [
-        { text: 'Home', link: '/' },
         { text: 'Manage People', link: '/managePeople' },
         { text: 'Manage Recipes', link: '/manageRecipes' },
-
     ];
 
     const { isAuthenticated, logout } = useAuth();
-    const client_id = import.meta.env.VITE_CLIENT_ID;
-    const redirect_uri = import.meta.env.VITE_REDIRECT_URI;
 
     return (
         <nav className='navmenu'>
@@ -27,9 +26,7 @@ const Navmenu: React.FC = () => {
                     <button className='noButtonFormatting hoverUnderSlide' onClick={logout}>Log Out</button>
                 </>
             ) : (
-                <Link to='/login' className='noAFormatting hoverUnderSlide'>
-                    Login
-                </Link>
+                <button className='noButtonFormatting hoverUnderSlide' onClick={showLoginDiv}>Log In</button>
             )}
         </nav>
     );

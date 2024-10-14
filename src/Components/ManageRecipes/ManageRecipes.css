@@ -130,16 +130,6 @@
     height: 3.5rem;
 }
 
-.deleteButton {
-    background-color: rgb(226, 58, 58);
-
-    padding: .4rem;
-}
-
-.deleteButton:hover {
-    background-color: rgb(255, 0, 0);
-}
-
 .updateRecipeButton {
     background-color: rgb(33, 186, 33);
 }
