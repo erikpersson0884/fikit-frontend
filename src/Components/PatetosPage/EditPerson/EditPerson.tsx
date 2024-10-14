@@ -3,6 +3,7 @@ import './EditPerson.css'
 
 import { Person } from '../../../types'
 import axios from "axios";
+import PopupButton from "../../PopupButton/PopupButton";
 
 const EditPerson: React.FC<{ person: Person, groupId: string, deletePerson: (id: string) => void }> = ({ person, groupId, deletePerson }) => {
     const [image, setImage] = React.useState<File | null>(null);
@@ -12,6 +13,14 @@ const EditPerson: React.FC<{ person: Person, groupId: string, deletePerson: (id:
     const [url, setUrl] = React.useState<string>(person.link);
     const [description, setDescription] = React.useState<string>(person.description);
     const [isFormChanged, setIsFormChanged] = React.useState<boolean>(false);
+
+    React.useEffect(() => {
+        setName(person.name);
+        setNick(person.nick);
+        setPost(person.post);
+        setUrl(person.link);
+        setDescription(person.description);
+    }, [person]);
 
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files) {
@@ -106,66 +115,118 @@ const EditPerson: React.FC<{ person: Person, groupId: string, deletePerson: (id:
         });
     }
 
+    const [showDeletePersonPopup, setShowDeletePersonPopup] = React.useState<boolean>(false);
 
 
     return (
+        <>
         <form className="editPerson" onSubmit={updatePerson}>
-            <img
-                className="editPersonImage"
-                src="images/icons/upload.svg"
-                alt="upload image"
-                onClick={() => document.getElementById(`updatePersonImgageInput${person.id}`)?.click()}
-            />
-            <input
-                id={`updatePersonImgageInput${person.id}`}
-                className="hidden"
-                type="file"
-                onChange={handleImageChange}>
-            </input>
+            <div className="inputDiv editPersonImageInputs">
+                <div 
+                    className="editPersonImage" 
+                    style={person.imageFileName?
+                        {backgroundImage: `url(${import.meta.env.VITE_PROFILEIMAGES_URL + person.imageFileName})`}
+                        :
+                        {backgroundImage: `url("images/icons/image.svg")`}
+                    }
+                >
+                    <div className="editImageOverlay" onClick={() =>
+                        {
+                            const inputElement = document.getElementById(`updatePersonImgageInput${person.id}`);
+                            if (inputElement) inputElement.click();
+                        }
+                    }>
+                        <img src="images/icons/edit.svg" alt="edit image" />
+                    </div>
 
-            <input
-                placeholder="Name"
-                value={name}
-                onChange={handleNameChange}
-                className={isFieldChanged(name, person.name)}
-            ></input>
-            <input
-                placeholder="Nick"
-                value={nick}
-                onChange={handleNickChange}
-                className={isFieldChanged(nick, person.nick)}
-            ></input>
-            <input
-                placeholder="Post"
-                value={post}
-                onChange={handlePostChange}
-                className={isFieldChanged(post, person.post)}
-            ></input>
-            <input
-                placeholder="Url"
-                value={url}
-                onChange={handleUrlChange}
-                className={isFieldChanged(url, person.link)}
-            ></input>
-            <textarea
-                placeholder="Description"
-                value={description}
-                onChange={handleDescriptionChange}
-                className={isFieldChanged(description, person.description)}
-            ></textarea>
+                </div>
 
-            {   
-                isFormChanged && 
-            <button 
-                className={`button noButtonFormatting ${isFormChanged ? "" : "invisible"}`} 
-                type="submit">
-                Update Person
+                <button className="inputDiv editPersonImageInputDiv">
+                    <label htmlFor={`updatePersonImgageInput${person.id}`} className="editPersonImageLabel inputDiv">
+                        Upload new Image
+                        <img src="images/icons/upload.svg" alt="upload image" />
+                    </label>
+                    <input
+                        id={`updatePersonImgageInput${person.id}`}
+                        className="hidden"
+                        type="file"
+                        onChange={handleImageChange}
+                    />
+                </button>
+
+            </div>
+ 
+            <div className="inputDiv editPersonInputs">
+                <div className="inputDiv">
+                    <label htmlFor="name">Name</label>
+                    <input
+                        placeholder="Name"
+                        value={name}
+                        onChange={handleNameChange}
+                        className={isFieldChanged(name, person.name)}
+                    />
+                </div>
+
+                <div className="inputDiv">
+                    <label htmlFor="nick">Nick</label>
+                    <input
+                        placeholder="Nick"
+                        value={nick}
+                        onChange={handleNickChange}
+                        className={isFieldChanged(nick, person.nick)}
+                    ></input>   
+                </div>
+
+                <div className="inputDiv">
+                    <label htmlFor="post">Post</label>
+                    <input
+                        placeholder="Post"
+                        value={post}
+                        onChange={handlePostChange}
+                        className={isFieldChanged(post, person.post)}
+                    ></input>
+                </div>
+
+
+                <div className="inputDiv">
+                    <label htmlFor="url">Url</label>
+                    <input
+                        placeholder="Url"
+                        value={url}
+                        onChange={handleUrlChange}
+                        className={isFieldChanged(url, person.link)}
+                    ></input>
+                </div>
+
+            </div>
+
+            <div className="descriptionAndButtons inputDiv">
+                <textarea
+                    placeholder="Description"
+                    value={description}
+                    onChange={handleDescriptionChange}
+                    className={isFieldChanged(description, person.description)}
+                ></textarea>
+
+                
+                    <button 
+                        className={`updateButton ${isFormChanged ? "" : "invisible"}`} 
+                        type="submit">
+                        Update Person
+                    </button>
+                
+            </div>
+            
+            <button className="deletePersonButton deleteButton" onClick={() => setShowDeletePersonPopup(true)}>
+                <img src="images/icons/delete.svg" alt="delete person" />
             </button>
-            }
-            
-            <button className="button noButtonFormatting" onClick={handleDeletePerson}>Delete Person</button>
-            
         </form>
+
+        {showDeletePersonPopup &&
+            <PopupButton text="Delete Person" onClick={handleDeletePerson} hide={() => setShowDeletePersonPopup(false)} />
+        }
+    
+        </>
     )
 }
 

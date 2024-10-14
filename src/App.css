@@ -1,48 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&family=Protest+Revolution&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
-
-
-
-:root {
-    --buttonColor: #2f4f4f;
-    --buttonHoverColor: #162424;
-
-    --changedFieldColor: #ffa500;
-
-    /* DARK MODE */
-    --backgroundColor: #212121;
-    --barelyLighterBackgroundColor: #1c1c1c;
-    --lighterBackgroundColor: #2f2f2f;
-    --darkerBackgroundColor: #1a1a1a;
-    --textColor: #fff;
-  
-    --headerColor: #2f4f4f;
-    --footerColor: #2f4f4f;
-  
-    --borderColor: #fff;
-  
-    --inputBackgroundColor: #f0f0f0;
-    --inputHoverColor: #c5c5c5;
-  
-    --removeButtonColor: #ff0000;
-    --removeButtonHoverColor: #cd0000;
-  
-    /* LIGHT MODE */
-    --backgroundColor: #fff;
-    --textColor: #000;
-
-    --offWhite: #d8dad8;
-    --glassColor: #0a0a0ac4;
-
-    --contrastColor: #008000;
-    --contrastColor2: #2f4f4f;
-    --footerColor: #454545;
-    --projectLinkColor: #cbebff;
-
-    --progressbarColor: #000;
-    --lightTextColor: #000;
-    --headerColor: var(--offWhite);
-}
 
 #root {
     display: flex;
@@ -52,34 +7,6 @@
 
     width: 100%;
     min-height: 100vh;
-}
-
-* {
-    height: max-content;
-
-    padding: 0;
-    margin: 0;
-}
-
-
-body {
-    background: var(--backgroundColor);
-    font-size: 18px;
-
-    width: 100%;
-    min-height: 100vh;
-}
-
-h1 {
-    font-size: 4rem;
-}
-
-h2 {
-    font-size: 2.5rem;
-}
-
-h3 {
-    font-size: 2rem;
 }
 
 .noUlFormatting {
@@ -113,16 +40,6 @@ h3 {
     visibility: hidden;
 }
 
-line {
-    background: #000;
-
-    display: block;
-
-    width: 100%;
-    height: .1rem;
-    margin-inline: auto;
-}
-
 .hoverUnderSlide::after {
     content: "";
     display: block;
@@ -137,71 +54,46 @@ line {
     width: 100%;
 }
 
+.updateButton {
+    background-color: rgb(20, 130, 20);
+}
 
+.updateButton:hover {
+    background-color: rgb(38, 198, 38);
+}
 
-.button {
-    background: darkslategray;
-    color: #fff;
+.cancelButton, .removeButton, .deleteButton {
+    background-color: rgb(163, 36, 36);
+}
 
+.cancelButton:hover, .removeButton:hover, .deleteButton:hover {
+    background-color: rgb(219, 73, 73);
+}
+
+.inputDiv {
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: space-between;
-    gap: .4rem;
-
-    cursor: pointer;
-
-    padding: .4rem;
-    border: none;
-    border-radius: .1rem;
+    gap: 1rem;
 }
 
-.button:hover {
-    background: #192929;
+.inputDiv input {
+    flex: 10;
 }
 
-.cancelButton {
-    background: var(--removeButtonColor);
-    color: #fff;
+.shadowBox {
+    background-color: #000000ad;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
 
-    cursor: pointer;
+    width: 100vw;
+    height: 100vh;
 
-    padding: .4rem;
-    border: none;
-    border-radius: .1rem;
-}
-
-.cancelButton:hover {
-    background: var(--removeButtonHoverColor);
-}
-
-.disabledButton {
-    background: rgb(106, 107, 107);
-    color: #fff;
-
-    cursor: pointer;
-
-    padding: .4rem;
-    border-radius: .1rem;
-}
-
-.disabledButton:hover {
-    background: rgb(106, 107, 107);
-    cursor: inherit;
-}
-
-.changedField {
-    outline: .15rem solid orange;
-}
-
-section>h2 {
-    font-family: 'Protest Revolution', sans-serif;
-    font-size: 3rem;
-    text-align: center;
-    margin: 2rem 0;
-}
-
-hr {
-    border-color: #000;
-    width: 100%;
+    z-index: 1000;
 }

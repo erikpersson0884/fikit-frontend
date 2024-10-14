@@ -3,49 +3,89 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    gap: .8rem;
+    gap: 4rem;
 
-    box-sizing: border-box;
-    width: 100%;
-    padding-inline: 1rem;
+    position: relative;
+
+    height: 15rem;
+    padding: 1rem;
+    padding-right: 4rem;
+
+    background-color: rgb(94, 94, 94);
+}
+
+.editPersonImageInputs {
+    flex-direction: column;
 }
 
 .editPersonImage {
-    background: #fff;
+    background-image: url("/images/logos/fikit.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 
-    height: 3rem;
+    height: 10rem;
+    width: 10rem;
     border: .05rem solid #000;
 }
 
-.editPerson input, .editPerson textarea{
-    background: rgb(255, 255, 255);
-    border: .05rem solid #000;
+.editPersonImage .editImageOverlay {
+    background-color: #ffffffaa;
 
-    min-height: max-content;
-    width: 4rem;
+    visibility: hidden;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
 }
 
-.editPerson input {
+.editPersonImage:hover .editImageOverlay {
+    visibility: visible;
+
+    cursor: pointer;
+}
+
+.editImageOverlay img {
+    width: 2rem;
+
+    filter: invert(1);;
+}
+
+.editPerson .editPersonImageInputDiv {
+    cursor: pointer;
+}
+
+.editPersonInputs {
+    flex-direction: column;
+}
+
+.editPerson .descriptionAndButtons {
+    flex-direction: column;
     flex: 1;
-
-    text-align: center;
-
+    height: 100%;
 }
 
 .editPerson textarea {
-    flex: 4;
-
-    resize: none;
-
-    width: 30rem;
-    height: 5rem;
-    padding: .4rem;
+    width: 100%;
+    padding: .5rem;
+    flex: 1;
 }
 
-.updatePersonButton {
-    background: var(--contrastColor2);
-    color: #fff;
+.deletePersonButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    padding: .2rem .2rem 1rem 1rem;
+    border: none;
+    border-radius: 0 0 0 5rem;
+}
+
+.deletePersonButton img {
+    width: 2rem;
 }
