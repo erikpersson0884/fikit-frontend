@@ -149,7 +149,7 @@ const EditGroup: React.FC<EditGroupProps> = ({ group, groups, setGroups }) => {
                     </button>
                     <button 
                         className="deleteButton" 
-                        onClick={handleDeleteGroup}
+                        onClick={() => setShowDeleteGroupPopup(true)}
                     >
                         Delete Group
                     </button>
@@ -170,9 +170,8 @@ const EditGroup: React.FC<EditGroupProps> = ({ group, groups, setGroups }) => {
                 </button>
             </div>
             
-            {showDeleteGroupPopup &&
-                <PopupButton text="Delete Group" onClick={handleDeleteGroup} hide={() => setShowDeleteGroupPopup(false)}/>
-            }
+            <PopupButton show={showDeleteGroupPopup} text="Delete Group" onClick={handleDeleteGroup} hide={() => setShowDeleteGroupPopup(false)}/>
+            
         </div>
     );
 }

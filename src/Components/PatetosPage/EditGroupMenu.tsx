@@ -39,9 +39,9 @@ const EditGroupMenu: React.FC<EditGroupMenuProps> = ({ activeGroup, setActiveGro
     }
 
     return (
-        <ul className="editGroupMenu noUlFormatting">
+        <ul className="sidebar noUlFormatting">
             {groups.map((group: Group) => (
-                <li className={ activeGroup && activeGroup.id === group.id? "activeGroup" : ""} key={group.id} onClick={() => setActiveGroup(group)}>
+                <li className={ activeGroup && activeGroup.id === group.id? "active" : ""} key={group.id} onClick={() => setActiveGroup(group)}>
                         {group.year} {group.name}
                 </li>
             ))}

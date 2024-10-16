@@ -65,7 +65,7 @@ button {
     outline: none;
 }
 
-input {
+input, select {
     background-color: #939393;
     color: #fff;
 

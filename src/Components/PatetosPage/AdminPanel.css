@@ -12,34 +12,6 @@
     flex: 1;
 }
 
-.editGroupMenu {
-    background-color: #5e5e5e;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1rem;
-}
-
-.editGroupMenu li {
-    background-color: var(--offWhite);
-    color: var(--textColor);
-
-    font-size: 1.5rem;
-
-    width: 100%;
-    padding: 1rem 2rem;
-}
-
-.editGroupMenu li:hover {
-    cursor: pointer;
-}
-
-.editGroupMenu .activeGroup {
-    background-color: #0f5d1b;
-}
-
 .addGroupDiv {
     background: var(--offWhite);
 

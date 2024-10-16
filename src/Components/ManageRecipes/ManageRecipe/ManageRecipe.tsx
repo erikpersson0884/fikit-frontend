@@ -1,12 +1,20 @@
 import React from 'react';
+import './ManageRecipe.css';
 
 import { RecipeT, Ingredient } from '../../../types';
+import PopupButton from '../../PopupButton/PopupButton';
 
 interface ManageRecipeProps {
     recipe: RecipeT;
 }
 
 const ManageRecipe: React.FC<ManageRecipeProps & { deleteRecipe: () => void }> = ({ recipe, deleteRecipe }) => {
+    const originalRecipe = { 
+        ...recipe, 
+        ingredients: recipe.ingredients.map(ingredient => ({ ...ingredient })), 
+        instructions: [...recipe.instructions] 
+    };
+
     const [recipeName, setRecipeName] = React.useState<string>(recipe.name);
     const [recipeAuthor, setRecipeAuthor] = React.useState<string>(recipe.author);
     const [ingredients, setIngredients] = React.useState<Ingredient[]>(recipe.ingredients);
@@ -14,8 +22,44 @@ const ManageRecipe: React.FC<ManageRecipeProps & { deleteRecipe: () => void }> =
     const [updateSuccess, setUpdateSuccess] = React.useState<boolean>(false);
     const [updateFailure, setUpdateFailure] = React.useState<boolean>(false);
 
-    const VITE_API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+    React.useEffect(() => {
+        setRecipeName(recipe.name);
+        setRecipeAuthor(recipe.author);
+        setIngredients(recipe.ingredients);
+        setInstructions(recipe.instructions);
+    }, [recipe]);
 
+    const [recipeIsChanged, setRecipeIsChanged] = React.useState<boolean>(false);
+
+    React.useEffect(() => {
+        setRecipeIsChanged(
+            recipeName !== originalRecipe.name ||
+            recipeAuthor !== originalRecipe.author ||
+            ingredients.length !== originalRecipe.ingredients.length || // Check for length difference first
+            !ingredients.every((ingredient, index) => {
+                const originalIngredient = originalRecipe.ingredients[index];
+                return (
+                    originalIngredient &&
+                    ingredient.name === originalIngredient.name &&
+                    ingredient.weight === originalIngredient.weight &&
+                    ingredient.density === originalIngredient.density &&
+                    ingredient.unit === originalIngredient.unit &&
+                    ingredient.packageSize === originalIngredient.packageSize
+                );
+            }) ||
+            !instructions.every((instruction, index) => instruction === originalRecipe.instructions[index])
+        );
+
+        
+    }, [recipeName, recipeAuthor, ingredients, instructions]);
+
+    // does not update when ingredients are changed, probably since 
+    
+    
+    
+
+
+    const VITE_API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
     function handleUpdateRecipe() {
         fetch(`${VITE_API_BASE_URL}/api/recipes/updateRecipe`, {
             method: 'POST',
@@ -69,6 +113,8 @@ const ManageRecipe: React.FC<ManageRecipeProps & { deleteRecipe: () => void }> =
         setIngredients(newIngredients);
     }
 
+    const [showDeleteRecipePopup, setShowDeleteRecipePopup] = React.useState<boolean>(false);
+
     return (
         <div className={`
             manageRecipe 
@@ -76,27 +122,32 @@ const ManageRecipe: React.FC<ManageRecipeProps & { deleteRecipe: () => void }> =
             ${updateSuccess ? 'blink-green' : ''}
             ${updateFailure ? 'blink-red' : ''}
         `}>
+
+            <button className='deleteRecipeButton noButtonFormatting deleteButton' onClick={deleteRecipe}>
+                <img src='images/icons/delete.svg' alt='Delete Recipe' />
+            </button>
+
+            <PopupButton show={showDeleteRecipePopup} text='Are you sure you want to delete this recipe?' onClick={deleteRecipe} hide={() => setShowDeleteRecipePopup(false)} />
+
             <header>
-                <div className='headerInputs'>
-                    <div className='headerInput'>
+                <div className='headerInputsDiv'>
+                    <div className='inputDiv'>
                         <label htmlFor={`manageRecipeName-${recipe.id}`}>Recipe Name</label>
                         <input id={`manageRecipeName-${recipe.id}`} type="text" value={recipeName} onChange={(e) => setRecipeName(e.target.value)} />
                     </div>
- 
-                    <div className='headerInput'>
+
+                    <div className='inputDiv'>
                         <label htmlFor={`manageRecipeAuthor-${recipe.id}`}>Recipe Author</label>
                         <input id={`manageRecipeAuthor-${recipe.id}`} type="text" value={recipeAuthor} onChange={(e) => setRecipeAuthor(e.target.value)} />
                     </div>
                 </div>
-                <div className='actionButtons'>
-                    <button className='updateRecipeButton addButton' onClick={handleUpdateRecipe}>Update Recipe</button>
-                    <button className='deleteRecipeButton deleteButton' onClick={deleteRecipe}>Delete Recipe</button>
-                </div>
             </header>
 
-            {instructions && 
-                <div className='instructions'>
-                    <h2>Instructions</h2>
+            <hr />
+
+            <div className='instructions'>
+                <h2>Instructions</h2>
+                { instructions.length > 0 ?
                     <ol>
                         {instructions.map((instruction, index) => (
                             <li key={index}>
@@ -110,32 +161,37 @@ const ManageRecipe: React.FC<ManageRecipeProps & { deleteRecipe: () => void }> =
                             </li>
                         ))}
                     </ol>
-                </div>
-            }
+                :
+                    <h4>Currently, there are no instructions</h4>
+                }
+                <button className='addButton' onClick={handleAddInstruction}>Add Instruction</button>
+            </div>
+            
 
-            <button className='addInstructionButton addButton' onClick={handleAddInstruction}>Add Instruction</button>
-
-            {ingredients.length > 0 &&
             <div className='ingredientsDiv'>
                 <h2>Ingredients</h2>
-                <div className='ingredientHeader'>
-                    <label>Ingredient</label>
-                    <label>Weight (g)</label>
-                    <label>Density (g/ml)</label>
-                    <label>Unit</label>
-                    <label>Package Size</label>
-                </div>
-                <ul className='noUlFormatting ingredients'>
-                    {ingredients.map((ingredient, index) => (
+
+                {ingredients.length > 0 ?
+                <>
+                    <header className='ingredientHeader'>
+                        <label>Ingredient</label>
+                        <label>Weight (g)</label>
+                        <label>Density (g/ml)</label>
+                        <label>Unit</label>
+                        <label>Package Size</label>
+                    </header>
+                    <ul className='noUlFormatting ingredientsList'>
+                        {ingredients.map((ingredient, index) => (
                         <li key={index}>
                             <input 
                                 type="text"
                                 value={ingredient.name}
                                 placeholder='Ingredient'
                                 onChange={(e) => {
-                                    const newIngredients = [...ingredients];
-                                    newIngredients[index].name = e.target.value;
-                                    setIngredients(newIngredients);
+                                    const newIngredients = ingredients.map((ing, i) => 
+                                        i === index ? { ...ing, name: e.target.value } : ing
+                                    );
+                                    setIngredients(newIngredients); // Create a new array reference
                                 }}
                             />
                             <input 
@@ -143,56 +199,66 @@ const ManageRecipe: React.FC<ManageRecipeProps & { deleteRecipe: () => void }> =
                                 value={ingredient.weight} 
                                 placeholder='Weight'
                                 onChange={(e) => {
-                                    const newIngredients = [...ingredients];
-                                    newIngredients[index].weight = Number(e.target.value);
-                                    setIngredients(newIngredients);
-                            }} />
-
+                                    const newIngredients = ingredients.map((ing, i) => 
+                                        i === index ? { ...ing, weight: Number(e.target.value) } : ing
+                                    );
+                                    setIngredients(newIngredients); // Create a new array reference
+                                }} 
+                            />
                             <input 
                                 type="number" 
                                 value={ingredient.density} 
                                 placeholder='Density'
                                 onChange={(e) => {
-                                    const newIngredients = [...ingredients];
-                                    newIngredients[index].density = Number(e.target.value);
-                                    setIngredients(newIngredients);
-                            }} />
-
+                                    const newIngredients = ingredients.map((ing, i) => 
+                                        i === index ? { ...ing, density: Number(e.target.value) } : ing
+                                    );
+                                    setIngredients(newIngredients); // Create a new array reference
+                                }} 
+                            />
                             <select 
                                 value={ingredient.unit} 
                                 onChange={(e) => {
-                                    const newIngredients = [...ingredients];
-                                    newIngredients[index].unit = e.target.value;
-                                    setIngredients(newIngredients);
-                            }}>
-                                <option value='g'>g</option>
-                                <option value='ml'>ml</option>
-                                <option value='tsk'>tsk</option>
-                                <option value='msk'>msk</option>
-                                <option value='dl'>dl</option>
-                            </select>
-                            
-                            <input 
-                                type="number" 
-                                value={ingredient.packageSize} 
-                                placeholder='Package Size'
-                                onChange={(e) => {
-                                    const newIngredients = [...ingredients];
-                                    newIngredients[index].packageSize = Number(e.target.value);
-                                    setIngredients(newIngredients);
-                            }} />
+                                    const newIngredients = ingredients.map((ing, i) => 
+                                        i === index ? { ...ing, unit: e.target.value } : ing
+                                    );
+                                    setIngredients(newIngredients); // Create a new array reference
+                                }}
+                                >
+                                    <option value='g'>g</option>
+                                    <option value='ml'>ml</option>
+                                    <option value='tsk'>tsk</option>
+                                    <option value='msk'>msk</option>
+                                    <option value='dl'>dl</option>
+                                </select>
+                                <input 
+                                    type="number" 
+                                    value={ingredient.packageSize} 
+                                    placeholder='Package Size'
+                                    onChange={(e) => {
+                                        const newIngredients = ingredients.map((ing, i) => 
+                                            i === index ? { ...ing, packageSize: Number(e.target.value) } : ing
+                                        );
+                                        setIngredients(newIngredients); // Create a new array reference
+                                    }} 
+                                />
+                                <button className='deleteIngredientButton deleteButton' onClick={() => handleDeleteIngredient(index)}>Delete</button>
+                            </li>
+                        ))}
+                    </ul>
 
-                            
-                            <button className='deleteIngredientButton deleteButton' onClick={() => handleDeleteIngredient(index)}>Delete</button>
-                            
-                        </li>
-                    ))}
-                </ul>
+                </>
+                :
+                    <h4>Currently, there are no ingredients</h4>
+                }
 
+                <button className='addIngredientButton' onClick={handleAddIngredient}>Add Ingredient</button>
             </div>
-        }   
-            <button className='addIngredientButton' onClick={handleAddIngredient}>Add Ingredient</button>
 
+                <div className='actionButtons'>
+                    <button className={`${recipeIsChanged ? 'updateRecipeButton' : ''} addButton`} onClick={handleUpdateRecipe}>Update Recipe</button>
+                </div>
+            
         </div>
     );
 }

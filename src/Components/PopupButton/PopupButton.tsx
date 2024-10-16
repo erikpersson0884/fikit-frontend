@@ -4,12 +4,14 @@ import './PopupButton.css';
 
 interface PopupButtonProps {
     text: string;
+    show?: boolean;
     onClick: () => void;
     hide: () => void;
 }
 
-const PopupButton: React.FC<PopupButtonProps> = ({text, onClick, hide}) => {
+const PopupButton: React.FC<PopupButtonProps> = ({text, show=true, onClick, hide}) => {
     return (
+        show &&
         <div className='shadowBox' onClick={hide}>
             <div className='popupButton'>
                 <h2>{text}</h2>
