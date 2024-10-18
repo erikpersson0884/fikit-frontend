@@ -1,4 +1,4 @@
-import './HomePageNavigation.css';
+import './PageNavigation.css';
 import { Link, useLocation } from 'react-router-dom';
 
 const HomePageNavigation = () => {

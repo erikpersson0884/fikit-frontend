@@ -6,22 +6,22 @@ import { Group, RecipeT } from './types'
 
 import Header from './Components/Header/Header'
 import Footer from './Components/Footer/Footer'
-import HomePageNavigation from './Components/HomePage/HomePageNavigation/HomePageNavigation'
-import LoginDiv from './Components/auth/LoginDiv'
+import HomePageNavigation from './Components/PageNavigation/PageNavigation'
+import LoginDiv from './Components/LoginDiv/LoginDiv'
 
 
-import SittandeSection from './Components/HomePage/SittandeSection/SittandeSection'
-import PatetosSection from './Components/HomePage/PatetosSection/PatetosSection'
+import SittandeSection from './PublicPages/PeoplePage/SittandePage/SittandeSection'
+import PatetosSection from './PublicPages/PeoplePage/PatetosPage/PatetosSection'
 
 import { AuthProvider } from './AuthenticationContext'
-import AdminPanel from './Components/PatetosPage/AdminPanel'
-import ManageRecipes from './Components/ManageRecipes/ManageRecipes'
+import AdminPanel from './AdminPages/ManagePeople/ManagePeople'
+import ManageRecipes from './AdminPages/ManageRecipes/ManageRecipes'
 
-import Frontpage from './Components/HomePage/FrontPage/Fontpage';
-import Joinpage from './Components/HomePage/Joinpage/Joinpage';
+import Frontpage from './PublicPages/FrontPage/Fontpage';
+import Joinpage from './PublicPages/Joinpage/Joinpage';
 
-import RecipesPage from './Components/HomePage/Recipes/RecipesPage';
-import ContactPage from './Components/HomePage/ContactPage/ContactPage';
+import RecipesPage from './PublicPages/RecipesPage/RecipesPage';
+import ContactPage from './PublicPages/ContactPage/ContactPage';
 
 function App() {
     const [groups, setGroups] = React.useState<Group[]>([]);

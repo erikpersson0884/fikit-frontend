@@ -3,7 +3,7 @@ import './EditPerson.css'
 
 import { Person } from '../../../types'
 import axios from "axios";
-import PopupButton from "../../PopupButton/PopupButton";
+import PopupButton from "../../../Components/PopupButton/PopupButton";
 
 const EditPerson: React.FC<{ person: Person, groupId: string, deletePerson: (id: string) => void }> = ({ person, groupId, deletePerson }) => {
     const [image, setImage] = React.useState<File | null>(null);

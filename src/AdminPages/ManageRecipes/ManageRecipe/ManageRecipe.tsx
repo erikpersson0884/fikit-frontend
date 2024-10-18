@@ -2,7 +2,7 @@ import React from 'react';
 import './ManageRecipe.css';
 
 import { RecipeT, Ingredient } from '../../../types';
-import PopupButton from '../../PopupButton/PopupButton';
+import PopupButton from "../../../Components/PopupButton/PopupButton";
 
 interface ManageRecipeProps {
     recipe: RecipeT;

@@ -4,7 +4,7 @@ import './EditGroup.css'
 import { Group, Person } from '../../../types';
 import axios from "axios";
 import EditPerson from "../EditPerson/EditPerson";
-import PopupButton from "../../PopupButton/PopupButton";
+import PopupButton from "../../../Components/PopupButton/PopupButton";
 
 interface EditGroupProps {
     group: Group;

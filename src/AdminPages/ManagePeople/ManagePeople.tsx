@@ -1,5 +1,5 @@
 import React from 'react'
-import './AdminPanel.css'
+    import './ManagePeople.css'
 import EditGroup from './EditGroup/EditGroup';
 import EditGroupMenu from './EditGroupMenu';
 

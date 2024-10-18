@@ -2,7 +2,6 @@ import React from "react";
 
 import { RecipeT } from "../../types";
 import ManageRecipe from "./ManageRecipe/ManageRecipe";
-import AddRecipe from "./AddRecipe";
 import "./ManageRecipes.css";
 
 import ManageRecipesMenu from "./ManageRecipesMenu";
